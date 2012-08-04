@@ -1,5 +1,7 @@
-package info.ogorzalek.birds;
+package info.ogorzalek.birds.activities;
 
+import info.ogorzalek.birds.R;
+import info.ogorzalek.birds.R.layout;
 import android.app.Activity;
 import android.os.Bundle;
 
