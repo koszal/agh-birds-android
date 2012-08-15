@@ -80,7 +80,6 @@ public class Backend {
 						}
 					});
 					
-					
 				} catch (final ClientProtocolException e) {
 					handler.post(new Runnable() {
 						public void run() {

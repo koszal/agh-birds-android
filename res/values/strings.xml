@@ -3,5 +3,27 @@
 
     <string name="hello">Hello World, StartActivity!</string>
     <string name="app_name">agh-birds-android</string>
+    
+    <color name="theme_pink_light">#d33661</color>
+    <color name="theme_pink_dark">#d2315d</color>
+    <color name="theme_yellow_light">#f7ca12</color>
+    <color name="theme_yellow_dark">#f7c808</color>
+    <color name="theme_orange_light">#e98c1b</color>
+    <color name="theme_orange_dark">#e98813</color>
+    <color name="theme_blue_light">#28b7c0</color>
+    <color name="theme_blue_dark">#22b5bf</color>
+    <color name="theme_purple_light">#8d6eaa</color>
+    <color name="theme_purple_dark">#8767a6</color>
+    <color name="theme_green_light">#8dc33c</color>
+    <color name="theme_green_dark">#88c134</color>
+    
+    <color name="theme_block_background_white">#ffffff</color>
+    <color name="theme_block_background_gray">#dedede</color>
+    <color name="theme_global_background">#cccccc</color>
+    
+    <color name="theme_text_blue">#0072bc</color>
+    <color name="theme_text_dark_gray">#353535</color>
+    <color name="theme_text_light_gray">#818181</color>
+    <color name="theme_text_gray">#585858</color>   
 
 </resources>
