@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/bird_list_element_parent"
+	android:layout_width="fill_parent" android:layout_height="wrap_content"
+	android:paddingBottom="1dp"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+	android:layout_marginBottom="1dp"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:background="@color/theme_block_background_gray"
+	android:paddingBottom="3dp" android:paddingTop="3dp"
+	android:paddingLeft="3dp" android:paddingRight="3dp">
+	<RelativeLayout android:id="@+id/bird_list_element_parent"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+		android:background="@color/theme_block_background_white"
+		android:paddingBottom="3dp" android:paddingTop="3dp"
+		android:paddingLeft="3dp" android:paddingRight="3dp">
+		<ImageView android:id="@+id/bird_image"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+			android:src="@drawable/bird_mock_photo_100" />
+	</RelativeLayout>
+	<TextView android:id="@+id/bird_name" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_alignTop="@+id/bird_list_element_parent"
+		android:layout_marginBottom="3dp" android:layout_marginLeft="10dp"
+		android:layout_toRightOf="@+id/bird_list_element_parent" android:text="March Tit"
+		android:textColor="@color/theme_text_gray" android:textSize="16dp" />
+	<TextView android:id="@+id/bird_description"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_alignLeft="@+id/bird_name" android:layout_below="@+id/bird_name"
+		android:text="The Marsh Tit Pocile palustris is a passerine bird in the tit family Paridae and genus Poecile."
+		android:textColor="@color/theme_text_light_gray" android:textSize="14dp"
+		android:maxLines="2" />
+</RelativeLayout>
+</RelativeLayout>
+
