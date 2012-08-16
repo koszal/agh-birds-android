@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class BirdMediaFragment extends Fragment {
+public class BirdProfileFragment extends Fragment {
 
 
 	@Override
@@ -23,7 +23,7 @@ public class BirdMediaFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		
-		View view = inflater.inflate(R.layout.bird_view_media, null);
+		View view = inflater.inflate(R.layout.bird_view_profile, null);
 
 
 		return view;

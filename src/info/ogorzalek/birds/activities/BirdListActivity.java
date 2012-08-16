@@ -3,6 +3,7 @@ package info.ogorzalek.birds.activities;
 import info.ogorzalek.birds.R;
 import info.ogorzalek.birds.general.Backend;
 import info.ogorzalek.birds.general.Backend.MetaResponse;
+import info.ogorzalek.birds.general.Routing;
 import info.ogorzalek.birds.models.Bird;
 import info.ogorzalek.birds.models.Bird.OnBirdResponse;
 import info.ogorzalek.birds.models.Bird.OnBirdResponseAdapter;
@@ -16,6 +17,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,8 +49,8 @@ public class BirdListActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
+		birdListBlockLinearLayout.removeAllViews();
 		Bird.list(getApplicationContext(), listener);
-		
 	}
 
 	private void applyTypeface()
@@ -75,7 +77,14 @@ public class BirdListActivity extends Activity {
 			for(Bird bird : birds)
 			{
 				View current = inflater.inflate(R.layout.bird_list_element, null);
-
+				current.setTag(bird.id);
+				current.setOnClickListener(new OnClickListener() {
+					public void onClick(View v) {
+						long id = (Long) v.getTag();
+						startActivity(Routing.showBird(getApplicationContext(), id));
+					}
+				});
+				
 				TextView birdName = (TextView) current.findViewById(R.id.bird_name);
 				TextView birdDescription = (TextView) current.findViewById(R.id.bird_description);
 
