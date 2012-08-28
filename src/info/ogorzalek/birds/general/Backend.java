@@ -31,7 +31,8 @@ public class Backend {
 	public static final int TIMEOUT_CONNECTION = 1000;
 	public static final int TIMEOUT_SOCKET = 1000;
 	
-	public static final String BASE_URL = "http://192.168.1.103/birds/index.php/api/01/";
+	//public static final String BASE_URL = "http://192.168.1.103/birds/index.php/api/01/";
+	public static final String BASE_URL = "http://ogorzalek.info/birds/index.php/api/01/";
 	
 	private static Backend instance;
 	

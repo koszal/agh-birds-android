@@ -25,6 +25,7 @@
         <activity android:name=".activities.BirdActivity"></activity>
         <activity android:name=".activities.BirdListActivity"></activity>
         <activity android:name=".activities.QuizActivity"></activity>
+        <activity android:name=".activities.QuizLauncherActivity"></activity>
         <activity android:name=".activities.SettingsActivity"></activity>
     </application>
 

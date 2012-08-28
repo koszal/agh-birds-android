@@ -6,10 +6,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
+import android.widget.TextView;
 
 public class BirdMediaFragment extends Fragment {
 
-
+	private TextView galleryTitle;
+	private GridView galleryGridView;
+	
 	@Override
 	public void onPause() {
 		super.onPause();
@@ -25,7 +29,9 @@ public class BirdMediaFragment extends Fragment {
 		
 		View view = inflater.inflate(R.layout.bird_view_media, null);
 
-
+		galleryTitle = (TextView) view.findViewById(R.id.bird_view_media_gallery_title);
+		galleryGridView = (GridView) view.findViewById(R.id.bird_view_media_gallery_grid);
+		
 		return view;
 	}
 
