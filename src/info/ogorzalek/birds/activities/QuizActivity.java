@@ -5,6 +5,8 @@ import com.larvalabs.svgandroid.SVGParseException;
 import com.larvalabs.svgandroid.SVGParser;
 
 import info.ogorzalek.birds.R;
+import info.ogorzalek.birds.views.PageIndicator;
+import info.ogorzalek.birds.views.QuizPageIndicator;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Picture;
@@ -13,22 +15,35 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class QuizActivity extends Activity {
+	
+	private QuizPageIndicator indicator;
+	
+	TextView tv;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quiz);
-           
+          
+        tv = (TextView) this.findViewById(R.id.tv);
+        
         MyPageAdapter adapter = new MyPageAdapter();
+        
         ViewPager pager = (ViewPager) this.findViewById(R.id.pager);
+        pager.setOnPageChangeListener(onPageChangeListener);
         pager.setAdapter(adapter);
         
+        LinearLayout indicatorLayout = (LinearLayout) this.findViewById(R.id.quiz_page_indicator_layout);
+        indicator = new QuizPageIndicator(getApplicationContext());
+        indicatorLayout.addView(indicator);
         
 	}
 	
@@ -75,4 +90,22 @@ public class QuizActivity extends Activity {
 		
 	}
 	
+	OnPageChangeListener onPageChangeListener = new OnPageChangeListener() {
+		
+		public void onPageSelected(int arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+			//debug.setText("pos: " + position + " posOff: " + positionOffset + " posPix: " + positionOffsetPixels);
+			indicator.update(position, positionOffset, positionOffsetPixels);
+			tv.setText("pos: " +  position + ", posOff: " + positionOffset + ", posOffPix: " +  positionOffsetPixels);
+		}
+		
+		public void onPageScrollStateChanged(int arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+	};
 }

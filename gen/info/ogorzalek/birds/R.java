@@ -117,10 +117,13 @@ public final class R {
         public static final int main_settings_button=0x7f07002b;
         public static final int map=0x7f070016;
         public static final int none_filters=0x7f070007;
-        public static final int pager=0x7f07003f;
+        public static final int pager=0x7f070041;
+        public static final int quiz_header_layout=0x7f07003f;
+        public static final int quiz_page_indicator_layout=0x7f070040;
         public static final int relativeLayout1=0x7f070003;
         public static final int testlin=0x7f070010;
         public static final int textView1=0x7f070000;
+        public static final int tv=0x7f070042;
     }
     public static final class layout {
         public static final int about=0x7f030000;
