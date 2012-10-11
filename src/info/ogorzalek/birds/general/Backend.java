@@ -12,6 +12,7 @@ import org.apache.http.HttpVersion;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.BasicHttpParams;
@@ -32,7 +33,7 @@ public class Backend {
 	public static final int TIMEOUT_SOCKET = 1000;
 	
 	//public static final String BASE_URL = "http://192.168.1.103/birds/index.php/api/01/";
-	public static final String BASE_URL = "http://ogorzalek.info/birds/index.php/api/01/";
+	public static final String BASE_URL = "http://192.168.1.105/birds/index.php/api/01/";
 	
 	private static Backend instance;
 	
@@ -62,6 +63,62 @@ public class Backend {
 			public void run() {
 				try {
 					HttpUriRequest request = new HttpGet(url);
+					//request.setHeader("Accept", "application/json");
+				
+					HttpResponse response = httpClient.execute(request);
+					InputStream is = response.getEntity().getContent();
+					
+					String dataString = getStringResponse(is);
+					final JSONObject dataObject = new JSONObject(dataString);
+					
+					if(dataObject.has("error_object"))
+					{
+						throw new BackendException(dataString, url);
+					}
+					
+					handler.post(new Runnable() {
+						public void run() {
+							listener.onResponse(dataObject);
+						}
+					});
+					
+				} catch (final ClientProtocolException e) {
+					handler.post(new Runnable() {
+						public void run() {
+							listener.onError(e);
+						}
+					});
+				} catch (final IOException e) {
+					handler.post(new Runnable() {
+						public void run() {
+							listener.onError(e);
+						}
+					});
+				} catch (final JSONException e) {
+					handler.post(new Runnable() {
+						public void run() {
+							listener.onError(e);
+						}
+					});
+				} catch (final BackendException e) {
+					handler.post(new Runnable() {
+						public void run() {
+							listener.onError(e);
+						}
+					});
+				}
+				
+			}
+		};
+		executor.execute(action);
+	}
+	
+	public void post(final OnHttpPostResponseListener listener, final String url)
+	{
+		Runnable action = new Runnable() {
+			public void run() {
+				try {
+					HttpUriRequest request = new HttpPost(url);
 					//request.setHeader("Accept", "application/json");
 				
 					HttpResponse response = httpClient.execute(request);
@@ -177,6 +234,12 @@ public class Backend {
 	}
 	
 	public interface OnHttpGetResponseListener
+	{
+		public void onResponse(JSONObject data);
+		public void onError(Exception e);
+	}
+	
+	public interface OnHttpPostResponseListener
 	{
 		public void onResponse(JSONObject data);
 		public void onError(Exception e);

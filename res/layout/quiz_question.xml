@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@color/theme_global_background" xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_marginTop="18dp" android:text="TextView"/>
-    
+<RelativeLayout android:id="@+id/question_relative_layout"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:background="@color/theme_global_background" xmlns:android="http://schemas.android.com/apk/res/android">
+	<LinearLayout android:id="@+id/question_linear_layout"
+		android:layout_width="fill_parent" android:layout_height="200dp" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_margin="10dp" android:background="@drawable/full_block_background" android:orientation="vertical">
+		<TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TextView"/>
+	</LinearLayout>
+
 
 </RelativeLayout>

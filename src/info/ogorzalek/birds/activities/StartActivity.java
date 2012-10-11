@@ -99,7 +99,7 @@ public class StartActivity extends Activity {
         dockQuizButton = (RelativeLayout) this.findViewById(R.id.main_quiz_button);
         dockQuizButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				startActivity(Routing.showQuiz(getApplicationContext()));
+				startActivity(Routing.showQuizLauncher(getApplicationContext()));
 			}
 		});
         

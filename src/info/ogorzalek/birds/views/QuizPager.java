@@ -16,7 +16,9 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-public class QuizPageIndicator extends View {
+public class QuizPager extends View {
+
+
 
 	private Context context;	
 	private Paint paint;
@@ -46,12 +48,13 @@ public class QuizPageIndicator extends View {
 	
 	private OnTapListener onTapListener;
 	
-	public QuizPageIndicator(Context ctx) {
-		super(ctx);
-		
-		
-		font = Typeface.createFromAsset(ctx.getApplicationContext().getAssets(), "fonts/chrysuni.ttf");
-		
+	public QuizPager(Context ctx, AttributeSet attrs) {
+
+		super(ctx, attrs);
+
+		font = Typeface.createFromAsset(
+				ctx.getApplicationContext().getAssets(), "fonts/chrysuni.ttf");
+
 		context = ctx;
 		paint = new Paint();
 		paintText = new Paint();
@@ -59,14 +62,14 @@ public class QuizPageIndicator extends View {
 		paintText.setTypeface(font);
 		paintText.setColor(Color.BLACK);
 		paintText.setAntiAlias(true);
-		
+
 		Resources res = getResources();
 		colorInactive = res.getColor(R.color.theme_text_light_gray);
 		colorActive = res.getColor(R.color.theme_blue_light);
 		colorText = Color.BLACK;
-		
-		//Log.d("adsfasd", grayDot.getWidth() + " ");
-		
+
+		// Log.d("adsfasd", grayDot.getWidth() + " ");
+
 	}
 	
 	public void update(int position, float positionOffset, int positionOffsetPixels)
@@ -91,9 +94,7 @@ public class QuizPageIndicator extends View {
 			int position = (int)Math.floor(x/rectLength);
 			
 			onTapListener.onTap(position);
-
 		}
-		
 		
 		return super.onTouchEvent(event);
 	}
@@ -138,7 +139,7 @@ public class QuizPageIndicator extends View {
 		Log.d("aaa","D"+paint.getAlpha());
 		canvas.drawRect(posX, posY, posX+rectLength, posY+height, paint);		
 		
-		canvas.drawText(Integer.toString(position + 1), posX + 6, posY + FONT_SIZE, paintText); // wtf co to 
+		canvas.drawText(Integer.toString(position + 1), posX + 6, posY + FONT_SIZE, paintText);
 	}
 	
 	private float pxToDp(float px) // FIXME

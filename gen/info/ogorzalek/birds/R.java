@@ -117,13 +117,17 @@ public final class R {
         public static final int main_settings_button=0x7f07002b;
         public static final int map=0x7f070016;
         public static final int none_filters=0x7f070007;
-        public static final int pager=0x7f070041;
-        public static final int quiz_header_layout=0x7f07003f;
-        public static final int quiz_page_indicator_layout=0x7f070040;
+        public static final int pager=0x7f070042;
+        public static final int question_linear_layout=0x7f070046;
+        public static final int question_relative_layout=0x7f070045;
+        public static final int quiz_launcher_recent_layout=0x7f070044;
+        public static final int quiz_launcher_start_quiz_button=0x7f070043;
+        public static final int quiz_page_indicator=0x7f070041;
+        public static final int quiz_pager=0x7f07003f;
         public static final int relativeLayout1=0x7f070003;
         public static final int testlin=0x7f070010;
         public static final int textView1=0x7f070000;
-        public static final int tv=0x7f070042;
+        public static final int tv=0x7f070040;
     }
     public static final class layout {
         public static final int about=0x7f030000;
@@ -140,6 +144,7 @@ public final class R {
         public static final int quiz_launcher=0x7f03000b;
         public static final int quiz_question=0x7f03000c;
         public static final int settings=0x7f03000d;
+        public static final int test=0x7f03000e;
     }
     public static final class raw {
         public static final int gradients=0x7f040000;
