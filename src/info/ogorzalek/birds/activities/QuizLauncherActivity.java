@@ -48,9 +48,6 @@ public class QuizLauncherActivity extends Activity {
 						startActivity(Routing.showQuiz(getApplicationContext(), quiz.id));
 					}
 					
-					public void onQuizListResponse(List<Quiz> quizes, MetaResponse meta) {						
-					}
-					
 					public void onError(Exception e) {
 						Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
 					}

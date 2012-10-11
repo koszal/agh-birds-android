@@ -27,8 +27,15 @@
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
 			android:layout_below="@+id/bird_view_profile_name"
 			android:layout_toRightOf="@+id/bird_view_profile_image_layout"
-			android:text="(Cyanistes caeruleus)" android:textColor="@color/theme_text_light_gray" android:textSize="12dp"/>
-		<TextView android:id="@+id/bird_view_profile_description" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignLeft="@+id/bird_view_profile_name_latin" android:layout_below="@+id/bird_view_profile_name_latin" android:layout_marginTop="3dp" android:maxLines="2" android:text="A small passerine bird in the tit family Paridae." android:textColor="@color/theme_text_gray" android:textSize="14dp"/>
+			android:text="(Cyanistes caeruleus)" android:textColor="@color/theme_text_light_gray"
+			android:textSize="12dp" />
+		<TextView android:id="@+id/bird_view_profile_description"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_alignLeft="@+id/bird_view_profile_name_latin"
+			android:layout_below="@+id/bird_view_profile_name_latin"
+			android:layout_marginTop="3dp" android:maxLines="2"
+			android:text="A small passerine bird in the tit family Paridae."
+			android:textColor="@color/theme_text_gray" android:textSize="14dp" />
 	</RelativeLayout>
 	<LinearLayout android:id="@+id/bird_view_profile_linear_layout"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
@@ -36,9 +43,18 @@
 		android:layout_marginLeft="5dp" android:layout_marginRight="5dp"
 		android:orientation="vertical">
 		<RelativeLayout android:layout_width="fill_parent"
-			android:layout_height="wrap_content" android:layout_marginTop="5dp" android:background="@drawable/full_block_background" android:padding="10dp">
-			<TextView android:id="@+id/block_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_marginBottom="4dp" android:text="Description" android:textColor="@color/theme_text_blue" android:textSize="16dp"/>
-			<TextView android:id="@+id/block_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignLeft="@+id/block_title" android:layout_below="@+id/block_title" android:text="Blue tits, usually resident and non-migratory birds, are widespread and a common resident breeder throughout temperate and subarctic Europe and western Asia in deciduous or mixed woodlands with a high proportion of oak. They usually nest in tree holes, although they easily adapt to nest boxes where necessary. The main rival for nests and search for food is the much larger Great Tit." android:textColor="@color/theme_text_gray" android:textSize="14dp"/>
+			android:layout_height="wrap_content" android:layout_marginTop="5dp"
+			android:background="@drawable/full_block_background" android:padding="10dp">
+			<TextView android:id="@+id/block_title"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+				android:layout_marginBottom="4dp" android:text="Description"
+				android:textColor="@color/theme_text_blue" android:textSize="16dp" />
+			<TextView android:id="@+id/block_text" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:layout_alignLeft="@+id/block_title"
+				android:layout_below="@+id/block_title"
+				android:text="Blue tits, usually resident and non-migratory birds, are widespread and a common resident breeder throughout temperate and subarctic Europe and western Asia in deciduous or mixed woodlands with a high proportion of oak. They usually nest in tree holes, although they easily adapt to nest boxes where necessary. The main rival for nests and search for food is the much larger Great Tit."
+				android:textColor="@color/theme_text_gray" android:textSize="14dp" />
 		</RelativeLayout>
 	</LinearLayout>
 

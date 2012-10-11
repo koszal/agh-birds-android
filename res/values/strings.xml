@@ -25,5 +25,6 @@
     <color name="theme_text_dark_gray">#353535</color>
     <color name="theme_text_light_gray">#818181</color>
     <color name="theme_text_gray">#585858</color>   
+    <color name="theme_text_white">#ffffff</color>   
 
 </resources>

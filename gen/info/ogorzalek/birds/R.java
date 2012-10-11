@@ -28,6 +28,7 @@ public final class R {
         public static final int theme_text_dark_gray=0x7f060010;
         public static final int theme_text_gray=0x7f060012;
         public static final int theme_text_light_gray=0x7f060011;
+        public static final int theme_text_white=0x7f060013;
         public static final int theme_yellow_dark=0x7f060003;
         public static final int theme_yellow_light=0x7f060002;
     }
@@ -57,6 +58,9 @@ public final class R {
         public static final int page_indicator_yellow_dot=0x7f020016;
     }
     public static final class id {
+        public static final int TextView02=0x7f07004a;
+        public static final int TextView03=0x7f07004b;
+        public static final int TextView04=0x7f07004c;
         public static final int awesomepager=0x7f070011;
         public static final int bird_description=0x7f07000e;
         public static final int bird_image=0x7f07000c;
@@ -118,8 +122,11 @@ public final class R {
         public static final int map=0x7f070016;
         public static final int none_filters=0x7f070007;
         public static final int pager=0x7f070042;
+        public static final int question_answers_layout=0x7f070049;
         public static final int question_linear_layout=0x7f070046;
         public static final int question_relative_layout=0x7f070045;
+        public static final int question_text=0x7f070048;
+        public static final int question_title=0x7f070047;
         public static final int quiz_launcher_recent_layout=0x7f070044;
         public static final int quiz_launcher_start_quiz_button=0x7f070043;
         public static final int quiz_page_indicator=0x7f070041;
