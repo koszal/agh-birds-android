@@ -1,15 +1,8 @@
 package info.ogorzalek.birds.activities;
 
-import java.util.List;
-
 import info.ogorzalek.birds.R;
-import info.ogorzalek.birds.R.layout;
 import info.ogorzalek.birds.general.Backend;
-import info.ogorzalek.birds.general.Backend.MetaResponse;
 import info.ogorzalek.birds.general.Routing;
-import info.ogorzalek.birds.models.Bird;
-import info.ogorzalek.birds.models.Bird.OnBirdResponse;
-import info.ogorzalek.birds.models.Bird.OnBirdResponseAdapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;

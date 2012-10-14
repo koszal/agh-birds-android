@@ -84,6 +84,7 @@
 				android:layout_below="@+id/bird_list_block_title_label"
 				android:layout_marginRight="4dp" android:orientation="vertical">
 			</LinearLayout>
+			<ProgressBar android:id="@+id/bird_list_progress_bar" style="?android:attr/progressBarStyleSmall" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:layout_margin="50dp"/>
 		</RelativeLayout>
 	</LinearLayout>
 

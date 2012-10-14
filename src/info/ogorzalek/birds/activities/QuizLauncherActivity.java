@@ -2,10 +2,6 @@ package info.ogorzalek.birds.activities;
 
 import java.util.List;
 
-import com.larvalabs.svgandroid.SVG;
-import com.larvalabs.svgandroid.SVGParseException;
-import com.larvalabs.svgandroid.SVGParser;
-
 import info.ogorzalek.birds.R;
 import info.ogorzalek.birds.general.Backend;
 import info.ogorzalek.birds.general.Backend.MetaResponse;
