@@ -131,6 +131,7 @@ public final class R {
         public static final int settings_cache_description=0x7f07004c;
         public static final int settings_cache_enable_checkbox=0x7f07004d;
         public static final int settings_cache_title_label=0x7f07004a;
+        public static final int settings_clear_cache_button=0x7f07004e;
         public static final int settings_linear_layout=0x7f070048;
         public static final int testlin=0x7f070011;
         public static final int textView1=0x7f070000;

@@ -54,7 +54,10 @@
 			<TextView android:id="@+id/settings_cache_title_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_marginBottom="8dp" android:layout_marginLeft="4dp" android:layout_marginTop="4dp" android:text="Cache" android:textColor="@color/theme_text_blue" android:textSize="16dp"/>
 			<LinearLayout android:id="@+id/settings_block_linear_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@+id/settings_cache_title_label" android:layout_centerHorizontal="true" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:orientation="vertical">
 				<TextView android:id="@+id/settings_cache_description" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5dp" android:text="When cache'ing is enabled all rarely changing data will be stored to future use. This feature may require some extra storage." android:textColor="@color/theme_text_light_gray" android:textSize="14dp"/>
-				<CheckBox android:id="@+id/settings_cache_enable_checkbox" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="enable cache" android:textColor="@color/theme_text_gray" android:textSize="14dp"/>
+				<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp">
+					<CheckBox android:id="@+id/settings_cache_enable_checkbox" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:text="enable cache" android:textColor="@color/theme_text_gray" android:textSize="14dp"/>
+					<Button android:id="@+id/settings_clear_cache_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:text="Clear cache"/>
+				</RelativeLayout>
 			</LinearLayout>
 		</RelativeLayout>
 	</LinearLayout>
