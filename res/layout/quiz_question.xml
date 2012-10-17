@@ -18,25 +18,26 @@
 		<LinearLayout android:id="@+id/question_answers_layout"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:layout_marginTop="15dp" android:orientation="vertical">
-			<TextView android:id="@+id/TextView02" android:layout_width="fill_parent"
-				android:layout_height="wrap_content" android:layout_marginBottom="2dp"
-				android:background="@color/theme_green_light" android:padding="10dp"
-				android:text="a. Yes, it is" android:textColor="@color/theme_text_white"
-				android:textSize="14dp" />
-			<TextView android:id="@+id/TextView03" android:layout_width="fill_parent"
-				android:layout_height="wrap_content" android:layout_marginBottom="2dp"
-				android:background="@color/theme_block_background_gray"
+			<TextView android:id="@+id/question_answer_1"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:layout_marginBottom="2dp" android:background="@color/theme_block_background_gray"
+				android:padding="10dp" android:text="a. Yes, it is"
+				android:textColor="@color/theme_text_white" android:textSize="14dp" />
+			<TextView android:id="@+id/question_answer_2"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:layout_marginBottom="2dp" android:background="@color/theme_block_background_gray"
 				android:padding="10dp" android:text="b. Nope, it isn't"
 				android:textColor="@color/theme_text_gray" android:textSize="14dp" />
-			<TextView android:id="@+id/TextView04" android:layout_width="fill_parent"
-				android:layout_height="wrap_content" android:layout_marginBottom="2dp"
-				android:background="@color/theme_block_background_gray"
+			<TextView android:id="@+id/question_answer_3"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:layout_marginBottom="2dp" android:background="@color/theme_block_background_gray"
 				android:padding="10dp" android:text="c. I am pretty convinced that it is"
 				android:textColor="@color/theme_text_gray" android:textSize="14dp" />
-			<TextView android:id="@+id/textView1" android:layout_width="fill_parent"
-				android:background="@color/theme_block_background_gray"
-				android:padding="10dp" android:layout_height="wrap_content"
-				android:text="d. Tomato" android:textColor="@color/theme_text_gray" android:textSize="14dp"/>
+			<TextView android:id="@+id/question_answer_4"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:layout_marginBottom="5dp" android:background="@color/theme_block_background_gray"
+				android:padding="10dp" android:text="d. Tomato" android:textColor="@color/theme_text_gray"
+				android:textSize="14dp" />
 		</LinearLayout>
 	</LinearLayout>
 

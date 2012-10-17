@@ -1,0 +1,9 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<style name="BirdsTheme" parent="android:Theme.Holo.Light">
+		
+		<item name="android:textColor">#ff0000</item>
+		
+	</style>
+
+</resources>

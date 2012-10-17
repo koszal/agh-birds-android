@@ -13,6 +13,7 @@ import com.google.gson.JsonArray;
 import android.content.Context;
 import android.media.MediaPlayer.OnBufferingUpdateListener;
 import android.util.Log;
+import android.widget.TextView;
 import info.ogorzalek.birds.general.Backend;
 import info.ogorzalek.birds.general.Backend.MetaResponse;
 import info.ogorzalek.birds.general.Backend.OnHttpGetResponseListener;
@@ -35,6 +36,10 @@ public class Question {
 	public boolean active;
 	public int quiz_id;
 	
+	// layouts
+
+
+	
 	public static Question fromJSON(JSONObject json)
 	{
 		Gson gson = new Gson();
@@ -51,5 +56,7 @@ public class Question {
 	{
 		return Backend.BASE_URL + Question.MODEL_URL + id;
 	}
+	
+	
 	
 }
