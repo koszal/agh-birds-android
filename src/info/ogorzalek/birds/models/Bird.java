@@ -32,7 +32,7 @@ public class Bird {
 		return bird;
 	}
 	
-	public static void list(Context context, final OnBirdResponse listener)
+	public static void list(Context context, final OnBirdListResponse listener)
 	{
 		final String url = getUrl();
 		
@@ -61,6 +61,14 @@ public class Bird {
 				listener.onError(e);
 				Log.d("BIRD", url);
 			}
+
+			public void onBeforeRequest() {
+				listener.onBeforeRequest();
+			}
+
+			public void onAfterRequest() {
+				listener.onAfterRequest();
+			}
 			
 		}, url);
 	}
@@ -70,18 +78,19 @@ public class Bird {
 		
 	}
 	
-	public static class OnBirdResponseAdapter implements OnBirdResponse
-	{
-		public void onBirdResponse(Bird bird) {}
-		public void onBirdListResponse(List<Bird> birds, MetaResponse meta) {}
-		public void onError(Exception e) {}
-	}
 	
 	public interface OnBirdResponse
 	{
 		void onBirdResponse(Bird bird);
+		void onError(Exception e);
+	}
+	
+	public interface OnBirdListResponse
+	{
+		void onBeforeRequest();
 		void onBirdListResponse(List<Bird> birds, MetaResponse meta);
 		void onError(Exception e);
+		void onAfterRequest();
 	}
 	
 	public static String getUrl()

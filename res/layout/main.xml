@@ -27,8 +27,13 @@
 				<TextView android:id="@+id/main_dock_catalogue_label"
 					android:layout_width="wrap_content" android:layout_height="wrap_content"
 					android:layout_alignParentBottom="true"
-					android:layout_centerHorizontal="true" android:text="catalogue" android:textColor="@color/theme_text_gray"/>
-				<ImageView android:id="@+id/imageView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:src="@drawable/button_catalogue_dock_gray"/>
+					android:layout_centerHorizontal="true" android:text="catalogue"
+					android:textColor="@color/theme_text_gray" />
+				<ImageView android:id="@+id/imageView2"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:layout_centerHorizontal="true"
+					android:layout_centerVertical="true"
+					android:src="@drawable/button_catalogue_dock_gray" />
 			</RelativeLayout>
 
 			<RelativeLayout android:id="@+id/main_search_button"
@@ -44,8 +49,12 @@
 				<TextView android:id="@+id/main_dock_search_label"
 					android:layout_width="wrap_content" android:layout_height="wrap_content"
 					android:layout_alignParentBottom="true"
-					android:layout_centerHorizontal="true" android:text="search" android:textColor="@color/theme_text_gray" />
-				<ImageView android:id="@+id/imageView3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:src="@drawable/button_search_dock_gray"/>
+					android:layout_centerHorizontal="true" android:text="search"
+					android:textColor="@color/theme_text_gray" />
+				<ImageView android:id="@+id/imageView3"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:layout_centerHorizontal="true"
+					android:layout_centerVertical="true" android:src="@drawable/button_search_dock_gray" />
 			</RelativeLayout>
 
 			<RelativeLayout android:id="@+id/main_settings_button"
@@ -61,8 +70,12 @@
 				<TextView android:id="@+id/main_dock_settings_label"
 					android:layout_width="wrap_content" android:layout_height="wrap_content"
 					android:layout_alignParentBottom="true"
-					android:layout_centerHorizontal="true" android:text="settings" android:textColor="@color/theme_text_gray" />
-				<ImageView android:id="@+id/imageView4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:src="@drawable/button_settings_dock_gray"/>
+					android:layout_centerHorizontal="true" android:text="settings"
+					android:textColor="@color/theme_text_gray" />
+				<ImageView android:id="@+id/imageView4"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:layout_centerHorizontal="true"
+					android:layout_centerVertical="true" android:src="@drawable/button_settings_dock_gray" />
 			</RelativeLayout>
 
 			<RelativeLayout android:id="@+id/main_quiz_button"
@@ -78,8 +91,12 @@
 				<TextView android:id="@+id/main_dock_quiz_label"
 					android:layout_width="wrap_content" android:layout_height="wrap_content"
 					android:layout_alignParentBottom="true"
-					android:layout_centerHorizontal="true" android:text="quiz" android:textColor="@color/theme_text_gray" />
-				<ImageView android:id="@+id/imageView5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:src="@drawable/button_quiz_dock_gray"/>
+					android:layout_centerHorizontal="true" android:text="quiz"
+					android:textColor="@color/theme_text_gray" />
+				<ImageView android:id="@+id/imageView5"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:layout_centerHorizontal="true"
+					android:layout_centerVertical="true" android:src="@drawable/button_quiz_dock_gray" />
 			</RelativeLayout>
 		</LinearLayout>
 	</RelativeLayout>
@@ -90,7 +107,10 @@
 		android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
 		android:background="@color/theme_blue_dark">
 		<RelativeLayout android:id="@+id/main_search_box"
-			android:layout_width="fill_parent" android:layout_height="165dp" android:layout_alignParentBottom="true" android:layout_alignParentLeft="true" android:layout_marginBottom="5dp" android:layout_marginLeft="5dp" android:layout_marginRight="5dp">
+			android:layout_width="fill_parent" android:layout_height="165dp"
+			android:layout_alignParentBottom="true"
+			android:layout_alignParentLeft="true" android:layout_marginBottom="5dp"
+			android:layout_marginLeft="5dp" android:layout_marginRight="5dp">
 			<RelativeLayout android:id="@+id/main_search_box_body"
 				android:layout_width="fill_parent" android:layout_height="fill_parent"
 				android:layout_above="@+id/main_search_box_footer"
@@ -111,17 +131,25 @@
 						android:text="Provide bird's name or country of occurence"
 						android:textColor="@color/theme_text_light_gray" android:textSize="12dp" />
 				</LinearLayout>
-				<TextView android:id="@+id/main_search_box_advanced_search_link" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_alignRight="@+id/linearLayout1" android:text="advanced search" android:textColor="@color/theme_text_blue" android:textSize="14dp"/>
+				<TextView android:id="@+id/main_search_box_advanced_search_link"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:layout_alignParentBottom="true" android:layout_alignRight="@+id/linearLayout1"
+					android:text="advanced search" android:textColor="@color/theme_text_blue"
+					android:textSize="14dp" />
 				<RelativeLayout android:id="@+id/main_search_box_form"
 					android:layout_width="fill_parent" android:layout_height="35dp"
 					android:layout_alignLeft="@+id/linearLayout1" android:layout_below="@+id/linearLayout1"
-					android:layout_marginBottom="15dp" android:layout_marginLeft="5dp" android:layout_marginRight="10dp" android:layout_marginTop="15dp" android:gravity="center">
-					<RelativeLayout android:id="@+id/main_search_box_button"
+					android:layout_marginBottom="15dp" android:layout_marginLeft="5dp"
+					android:layout_marginRight="10dp" android:layout_marginTop="15dp"
+					android:gravity="center">
+					<LinearLayout android:id="@+id/main_search_box_button"
 						android:layout_width="80dp" android:layout_height="fill_parent"
 						android:layout_alignParentRight="true"
-						android:layout_alignParentTop="true" android:background="@color/theme_blue_light">
-						<ImageView android:id="@+id/imageView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:src="@drawable/button_search_white"/>
-					</RelativeLayout>
+						android:layout_alignParentTop="true" style="@android:style/Widget.Button" android:background="@drawable/blue_button"
+						>
+						<ImageView android:id="@+id/imageView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/button_search_white"/>
+					</LinearLayout>
+						
 					<EditText android:id="@+id/main_search_box_edit"
 						android:layout_width="wrap_content" android:layout_height="fill_parent"
 						android:gravity="center_vertical" android:layout_alignParentLeft="true"
@@ -139,8 +167,14 @@
 				android:layout_alignParentLeft="true"
 				android:background="@drawable/half_block_background_footer"></RelativeLayout>
 		</RelativeLayout>
-		<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_above="@+id/main_search_box" android:layout_alignParentLeft="true" android:layout_alignParentRight="true" android:layout_alignParentTop="true">
-			<ImageView android:id="@+id/imageView6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:src="@drawable/main_screen_logo"/>
+		<RelativeLayout android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:layout_above="@+id/main_search_box"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentRight="true" android:layout_alignParentTop="true">
+			<ImageView android:id="@+id/imageView6"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:layout_centerHorizontal="true"
+				android:layout_centerVertical="true" android:src="@drawable/main_screen_logo" />
 		</RelativeLayout>
 
 	</RelativeLayout>

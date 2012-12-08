@@ -1,22 +1,17 @@
 package info.ogorzalek.birds.activities;
 
-import java.util.List;
-
 import info.ogorzalek.birds.R;
-import info.ogorzalek.birds.R.layout;
 import info.ogorzalek.birds.general.Backend;
-import info.ogorzalek.birds.general.Backend.MetaResponse;
 import info.ogorzalek.birds.general.Routing;
-import info.ogorzalek.birds.models.Bird;
-import info.ogorzalek.birds.models.Bird.OnBirdResponse;
-import info.ogorzalek.birds.models.Bird.OnBirdResponseAdapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -35,7 +30,7 @@ public class StartActivity extends Activity {
 	private TextView dockQuizLabel;
 	
 	private EditText searchEdit;
-	private RelativeLayout searchButton;
+	private LinearLayout searchButton;
 	private EditText advancedSearchButton;
 	
 	private RelativeLayout dockCatalogueButton;
@@ -67,7 +62,7 @@ public class StartActivity extends Activity {
         dockQuizLabel = (TextView) this.findViewById(R.id.main_dock_quiz_label);
         
         searchEdit = (EditText) this.findViewById(R.id.main_search_box_edit);
-        searchButton = (RelativeLayout) this.findViewById(R.id.main_search_box_button);
+        searchButton = (LinearLayout) this.findViewById(R.id.main_search_box_button);
         searchButton.setOnClickListener(new OnClickListener() {	
 			public void onClick(View v) {
 				Intent intent = Routing.showBirdList(getApplicationContext(), searchEdit.getEditableText().toString());

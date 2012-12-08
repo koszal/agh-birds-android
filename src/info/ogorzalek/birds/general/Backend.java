@@ -32,8 +32,8 @@ public class Backend {
 	public static final int TIMEOUT_CONNECTION = 5000;
 	public static final int TIMEOUT_SOCKET = 5000;
 	
-	//public static final String BASE_URL = "http://192.168.1.103/birds/index.php/api/01/";
 	public static final String BASE_URL = "http://192.168.1.105/birds/index.php/api/01/";
+	//public static final String BASE_URL = "http://ogorzalek.info/birds/index.php/api/01/";
 	
 	private static Backend instance;
 	
@@ -62,6 +62,12 @@ public class Backend {
 		Runnable action = new Runnable() {
 			public void run() {
 				try {
+					handler.post(new Runnable() {
+						public void run() {
+							listener.onBeforeRequest();
+						};
+					});
+					
 					HttpUriRequest request = new HttpGet(url);
 					//request.setHeader("Accept", "application/json");
 				
@@ -107,6 +113,11 @@ public class Backend {
 						}
 					});
 				}
+				handler.post(new Runnable() {
+					public void run() {
+						listener.onAfterRequest();
+					};
+				});
 				
 			}
 		};
@@ -237,6 +248,8 @@ public class Backend {
 	{
 		public void onResponse(JSONObject data);
 		public void onError(Exception e);
+		public void onBeforeRequest();
+		public void onAfterRequest();
 	}
 	
 	public interface OnHttpPostResponseListener

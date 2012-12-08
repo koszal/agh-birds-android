@@ -1,10 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@color/theme_global_background"
-    >
-    <TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:text="advanced search"/>
-    
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:background="@color/theme_global_background">
+	<RelativeLayout android:id="@+id/dock"
+		android:layout_width="fill_parent" android:layout_height="20dp"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentLeft="true" android:background="@drawable/half_block_background">
+		<LinearLayout android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:layout_alignParentLeft="true"
+			android:layout_alignParentTop="true">
+			<RelativeLayout android:layout_width="fill_parent"
+				android:background="@color/theme_block_background_gray"
+				android:layout_height="fill_parent" android:layout_marginRight="1dp"
+				android:layout_weight="1">
+				<RelativeLayout android:layout_width="fill_parent"
+					android:layout_height="5dp" android:layout_alignParentLeft="true"
+					android:background="@color/theme_pink_light"
+					android:layout_alignParentTop="true"></RelativeLayout>
+			</RelativeLayout>
+			<RelativeLayout android:layout_width="fill_parent"
+				android:background="@color/theme_block_background_gray"
+				android:layout_height="fill_parent" android:layout_marginRight="1dp"
+				android:layout_marginLeft="1dp" android:layout_weight="1">
+				<RelativeLayout android:layout_width="fill_parent"
+					android:layout_height="5dp" android:layout_alignParentLeft="true"
+					android:layout_alignParentTop="true" android:background="@color/theme_yellow_light"></RelativeLayout>
+			</RelativeLayout>
+			<RelativeLayout android:layout_width="fill_parent"
+				android:background="@color/theme_block_background_gray"
+				android:layout_height="fill_parent" android:layout_marginRight="1dp"
+				android:layout_marginLeft="1dp" android:layout_weight="1">
+				<RelativeLayout android:layout_width="fill_parent"
+					android:layout_height="5dp" android:layout_alignParentLeft="true"
+					android:layout_alignParentTop="true" android:background="@color/theme_green_light"></RelativeLayout>
+			</RelativeLayout>
+			<RelativeLayout android:layout_width="fill_parent"
+				android:background="@color/theme_block_background_gray"
+				android:layout_height="fill_parent" android:layout_marginLeft="1dp"
+				android:layout_weight="1">
+				<RelativeLayout android:layout_width="fill_parent"
+					android:layout_height="5dp" android:layout_alignParentLeft="true"
+					android:layout_alignParentTop="true" android:background="@color/theme_orange_light"></RelativeLayout>
+			</RelativeLayout>
+		</LinearLayout>
+	</RelativeLayout>
+	<LinearLayout android:id="@+id/search_linear_layout"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_above="@+id/relativeLayout1"
+		android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+		android:orientation="vertical">
+		<RelativeLayout android:id="@+id/search_block"
+			android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:layout_marginTop="5dp" android:layout_weight="24013.69" android:background="@drawable/full_blcok_backgrond_footer" android:paddingBottom="25dp">
+			<TextView android:id="@+id/search_title_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_marginBottom="8dp" android:layout_marginLeft="4dp" android:layout_marginTop="4dp" android:text="Advanced Search" android:textColor="@color/theme_text_blue" android:textSize="16dp"/>
+			<LinearLayout android:id="@+id/search_block_linear_layout"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:layout_alignLeft="@+id/search_title_label"
+				android:layout_below="@+id/search_title_label" android:layout_marginRight="5dp" android:orientation="vertical">
+				<TextView android:id="@+id/search_description" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="25dp" android:text="Provide specific search filters below" android:textColor="@color/theme_text_light_gray" android:textSize="14dp"/>
+				<LinearLayout android:id="@+id/search_order_layout"
+					android:layout_width="match_parent" android:layout_height="wrap_content"
+					android:layout_marginBottom="10dp">
+					<TextView android:id="@+id/search_order_label"
+						android:layout_width="match_parent" android:layout_height="wrap_content"
+						android:layout_weight=".65" android:text="Order"
+						android:textColor="@color/theme_text_gray" />
+					<Spinner android:id="@+id/search_order_spinner"
+						android:layout_width="match_parent" android:layout_height="wrap_content"
+						android:layout_weight=".35" />
+				</LinearLayout>
+				<LinearLayout android:id="@+id/LinearLayout03"
+					android:layout_width="match_parent" android:layout_height="wrap_content"
+					android:layout_marginBottom="10dp">
+					<TextView android:id="@+id/search_family_label"
+						android:layout_width="match_parent" android:layout_height="wrap_content"
+						android:layout_weight=".65" android:text="Family"
+						android:textColor="@color/theme_text_gray" />
+					<Spinner android:id="@+id/search_family_spinner"
+						android:layout_width="match_parent" android:layout_height="wrap_content"
+						android:layout_weight=".35" />
+				</LinearLayout>
+				<LinearLayout android:id="@+id/LinearLayout02"
+					android:layout_width="match_parent" android:layout_height="wrap_content"
+					android:layout_marginBottom="10dp">
+					<TextView android:id="@+id/search_genus_label"
+						android:layout_width="match_parent" android:layout_height="wrap_content"
+						android:layout_weight=".65" android:text="Genus"
+						android:textColor="@color/theme_text_gray" />
+					<Spinner android:id="@+id/search_genus_spinner"
+						android:layout_width="match_parent" android:layout_height="wrap_content"
+						android:layout_weight=".35" />
+				</LinearLayout>
+				<LinearLayout android:id="@+id/LinearLayout01"
+					android:layout_width="match_parent" android:layout_height="wrap_content">
+					<TextView android:id="@+id/search_country_label"
+						android:layout_width="match_parent" android:layout_height="wrap_content"
+						android:layout_weight=".65" android:text="Country"
+						android:textColor="@color/theme_text_gray" />
+					<Spinner android:id="@+id/search_country_spinner"
+						android:layout_width="match_parent" android:layout_height="wrap_content"
+						android:layout_weight=".35" />
+				</LinearLayout>
+			</LinearLayout>
+			<LinearLayout android:id="@+id/main_search_box_button" style="@android:style/Widget.Button" android:layout_width="100dp" android:layout_height="wrap_content" android:layout_alignRight="@+id/search_block_linear_layout" android:layout_below="@+id/search_block_linear_layout" android:layout_marginTop="15dp" android:background="@drawable/blue_button" android:padding="6dp">
+				<ImageView android:id="@+id/imageView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/button_search_white"/>
+			</LinearLayout>
+		</RelativeLayout>
+	</LinearLayout>
+
 
 </RelativeLayout>

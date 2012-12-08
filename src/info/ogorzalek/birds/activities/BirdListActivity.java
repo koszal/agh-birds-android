@@ -1,13 +1,10 @@
 package info.ogorzalek.birds.activities;
 
 import info.ogorzalek.birds.R;
-import info.ogorzalek.birds.general.Backend;
 import info.ogorzalek.birds.general.Backend.MetaResponse;
 import info.ogorzalek.birds.general.Routing;
 import info.ogorzalek.birds.models.Bird;
-import info.ogorzalek.birds.models.Bird.OnBirdResponse;
-import info.ogorzalek.birds.models.Bird.OnBirdResponseAdapter;
-
+import info.ogorzalek.birds.models.Bird.OnBirdListResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +30,8 @@ public class BirdListActivity extends Activity {
 	private TextView birdListBlockTitle;
 	private LinearLayout birdListBlockLinearLayout;
 	
+	private ProgressBar birdListProgressBar;
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +42,8 @@ public class BirdListActivity extends Activity {
         
         birdListBlockTitle = (TextView) this.findViewById(R.id.bird_list_block_title_label);
         birdListBlockLinearLayout = (LinearLayout) this.findViewById(R.id.bird_list_block_linear_layout);
+        
+        birdListProgressBar = (ProgressBar) this.findViewById(R.id.bird_list_progress_bar);
         
         applyTypeface();
 	}
@@ -66,9 +68,8 @@ public class BirdListActivity extends Activity {
 		v.setTypeface(t);
 	}
 	
-	private OnBirdResponseAdapter listener = new OnBirdResponseAdapter() {
+	private OnBirdListResponse listener = new OnBirdListResponse() {
 
-		@Override
 		public void onBirdListResponse(List<Bird> birds, MetaResponse meta) {
 			
 			Typeface font = Typeface.createFromAsset(getAssets(), "fonts/chrysuni.ttf");
@@ -98,9 +99,17 @@ public class BirdListActivity extends Activity {
 			}
 		}
 
-		@Override
 		public void onError(Exception e) {
 			Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
+		}
+
+		public void onBeforeRequest() {
+			birdListProgressBar.setVisibility(View.VISIBLE);
+		}
+
+		public void onAfterRequest() {
+			birdListProgressBar.setVisibility(View.GONE);
+			
 		}
 		
 	};	

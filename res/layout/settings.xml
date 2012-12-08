@@ -1,10 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@color/theme_global_background"
-    >
-    <TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:text="settings"/>
-    
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:background="@color/theme_global_background">
+	<RelativeLayout android:id="@+id/dock"
+		android:layout_width="fill_parent" android:layout_height="20dp"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentLeft="true" android:background="@drawable/half_block_background">
+		<LinearLayout android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:layout_alignParentLeft="true"
+			android:layout_alignParentTop="true">
+			<RelativeLayout android:layout_width="fill_parent"
+				android:background="@color/theme_block_background_gray"
+				android:layout_height="fill_parent" android:layout_marginRight="1dp"
+				android:layout_weight="1">
+				<RelativeLayout android:layout_width="fill_parent"
+					android:layout_height="5dp" android:layout_alignParentLeft="true"
+					android:background="@color/theme_pink_light"
+					android:layout_alignParentTop="true"></RelativeLayout>
+			</RelativeLayout>
+			<RelativeLayout android:layout_width="fill_parent"
+				android:background="@color/theme_block_background_gray"
+				android:layout_height="fill_parent" android:layout_marginRight="1dp"
+				android:layout_marginLeft="1dp" android:layout_weight="1">
+				<RelativeLayout android:layout_width="fill_parent"
+					android:layout_height="5dp" android:layout_alignParentLeft="true"
+					android:layout_alignParentTop="true" android:background="@color/theme_yellow_light"></RelativeLayout>
+			</RelativeLayout>
+			<RelativeLayout android:layout_width="fill_parent"
+				android:background="@color/theme_block_background_gray"
+				android:layout_height="fill_parent" android:layout_marginRight="1dp"
+				android:layout_marginLeft="1dp" android:layout_weight="1">
+				<RelativeLayout android:layout_width="fill_parent"
+					android:layout_height="5dp" android:layout_alignParentLeft="true"
+					android:layout_alignParentTop="true" android:background="@color/theme_green_light"></RelativeLayout>
+			</RelativeLayout>
+			<RelativeLayout android:layout_width="fill_parent"
+				android:background="@color/theme_block_background_gray"
+				android:layout_height="fill_parent" android:layout_marginLeft="1dp"
+				android:layout_weight="1">
+				<RelativeLayout android:layout_width="fill_parent"
+					android:layout_height="5dp" android:layout_alignParentLeft="true"
+					android:layout_alignParentTop="true" android:background="@color/theme_orange_light"></RelativeLayout>
+			</RelativeLayout>
+		</LinearLayout>
+	</RelativeLayout>
+	<LinearLayout android:id="@+id/settings_linear_layout"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_above="@+id/relativeLayout1"
+		android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+		android:orientation="vertical">
+		<RelativeLayout android:id="@+id/settings_block"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			android:layout_marginLeft="5dp" android:layout_marginRight="5dp"
+			android:layout_marginTop="5dp" android:background="@drawable/full_block_background"
+			android:paddingBottom="10dp">
+			<TextView android:id="@+id/settings_cache_title_label"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+				android:layout_marginBottom="8dp" android:layout_marginLeft="4dp"
+				android:layout_marginTop="4dp" android:text="Cache"
+				android:textColor="@color/theme_text_blue" android:textSize="16dp" />
+			<LinearLayout android:id="@+id/settings_block_linear_layout"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:layout_below="@+id/settings_cache_title_label"
+				android:layout_centerHorizontal="true" android:layout_marginLeft="5dp"
+				android:layout_marginRight="5dp" android:orientation="vertical">
+				<TextView android:id="@+id/settings_cache_description"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:layout_marginBottom="5dp"
+					android:text="When cache'ing is enabled all rarely changing data will be stored to future use. This feature may require some extra storage."
+					android:textColor="@color/theme_text_light_gray" android:textSize="14dp" />
+				<RelativeLayout android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:layout_marginTop="10dp">
+					<CheckBox android:id="@+id/settings_cache_enable_checkbox"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:layout_alignParentLeft="true"
+						android:layout_alignParentTop="true" android:text="enable cache"
+						android:textColor="@color/theme_text_gray" android:textSize="14dp" />
+					<Button android:id="@+id/settings_clear_cache_button"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:layout_alignBaseline="@+id/settings_cache_enable_checkbox"
+						android:layout_alignBottom="@+id/settings_cache_enable_checkbox"
+						android:layout_alignParentRight="true" android:background="@drawable/blue_button"
+						android:text="Clear cache" android:textColor="@color/theme_text_white" android:textSize="14dp" android:paddingLeft="15dp" android:paddingRight="15dp" android:paddingBottom="8dp" android:paddingTop="8dp" />
+				</RelativeLayout>
+			</LinearLayout>
+		</RelativeLayout>
+	</LinearLayout>
+
 
 </RelativeLayout>

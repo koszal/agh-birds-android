@@ -66,6 +66,12 @@ public class Quiz {
 				listener.onError(e);
 				Log.d("BIRD", url);
 			}
+
+			public void onBeforeRequest() {
+			}
+
+			public void onAfterRequest() {
+			}
 			
 		}, url);
 	}
@@ -86,6 +92,16 @@ public class Quiz {
 			
 			public void onError(Exception e) {
 				listener.onError(e);
+			}
+
+			public void onBeforeRequest() {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void onAfterRequest() {
+				// TODO Auto-generated method stub
+				
 			}
 		}, url);
 		

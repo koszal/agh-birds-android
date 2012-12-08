@@ -27,4 +27,32 @@
     <color name="theme_text_gray">#585858</color>   
     <color name="theme_text_white">#ffffff</color>   
 
+    <string-array name="orders">
+    	<item>-- not selected --</item>
+        <item>Passeriformes</item>
+        <item>Ciconiiformes</item>
+        <item>Anseriformes</item>
+    </string-array>
+    
+    <string-array name="families">
+    	<item>-- not selected --</item>
+        <item>Paridae</item>
+        <item>Ciconiidae</item>
+        <item>Anatidae</item>
+    </string-array>
+    
+    <string-array name="genuses">
+    	<item>-- not selected --</item>
+        <item>Cyanistes</item>
+        <item>Ciconia</item>
+        <item>Merginae</item>
+    </string-array>
+    
+    <string-array name="countries">
+    	<item>-- not selected --</item>
+        <item>Poland</item>
+        <item>Germany</item>
+        <item>Russia</item>
+    </string-array>
+    
 </resources>
