@@ -1,11 +1,16 @@
 package info.ogorzalek.birds.activities;
 
 import info.ogorzalek.birds.R;
+import info.ogorzalek.birds.general.Routing;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -18,10 +23,15 @@ public class AdvancedSearchActivity extends Activity{
 	private Spinner genusSpinner;
 	private Spinner countrySpinner;
 	
+	private LinearLayout searchButton;
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.advanced_search);
+        
+        searchButton = (LinearLayout) this.findViewById(R.id.search_box_button);
+        searchButton.setOnClickListener(onSearchButton);
 
         title = (TextView) this.findViewById(R.id.search_title_label);
         subtitle = (TextView) this.findViewById(R.id.search_description);
@@ -68,5 +78,32 @@ public class AdvancedSearchActivity extends Activity{
     	genusLabel.setTypeface(font);
     	countryLabel.setTypeface(font);
     }
+	
+	private OnClickListener onSearchButton = new OnClickListener() {
+		
+		public void onClick(View v) {
+			
+			String order = null, family = null, genus = null, country = null;
+			
+			if(orderSpinner.getSelectedItemId() != 0) {
+				order = (String) orderSpinner.getSelectedItem();
+			}
+			
+			if(familySpinner.getSelectedItemId() != 0) {
+				family = (String) familySpinner.getSelectedItem();
+			}
+			
+			if(genusSpinner.getSelectedItemId() != 0) {
+				genus = (String) genusSpinner.getSelectedItem();
+			}
+			
+			if(countrySpinner.getSelectedItemId() != 0) {
+				country = (String) countrySpinner.getSelectedItem();
+			}
+			
+			Intent intent = Routing.showBirdList(AdvancedSearchActivity.this, order, family, genus, country);
+			startActivity(intent);
+		}
+	};
 	
 }

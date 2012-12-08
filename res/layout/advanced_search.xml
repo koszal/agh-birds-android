@@ -101,7 +101,7 @@
 						android:layout_weight=".35" />
 				</LinearLayout>
 			</LinearLayout>
-			<LinearLayout android:id="@+id/main_search_box_button" style="@android:style/Widget.Button" android:layout_width="100dp" android:layout_height="wrap_content" android:layout_alignRight="@+id/search_block_linear_layout" android:layout_below="@+id/search_block_linear_layout" android:layout_marginTop="15dp" android:background="@drawable/blue_button" android:padding="6dp">
+			<LinearLayout android:id="@+id/search_box_button" style="@android:style/Widget.Button" android:layout_width="100dp" android:layout_height="wrap_content" android:layout_alignRight="@+id/search_block_linear_layout" android:layout_below="@+id/search_block_linear_layout" android:layout_marginTop="15dp" android:background="@drawable/blue_button" android:padding="6dp">
 				<ImageView android:id="@+id/imageView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/button_search_white"/>
 			</LinearLayout>
 		</RelativeLayout>

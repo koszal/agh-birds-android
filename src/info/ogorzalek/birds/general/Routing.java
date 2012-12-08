@@ -33,6 +33,21 @@ public class Routing {
 		return intent;
 	}
 	
+	public static Intent showBirdList(Context c, String order, String family, String genus, String country)
+	{
+		Intent intent = new Intent(c, BirdListActivity.class);
+		if(order != null) 
+			intent.putExtra("order", order);
+		if(family != null) 
+			intent.putExtra("family", family);
+		if(genus != null) 
+			intent.putExtra("genus", genus);
+		if(country != null) 
+			intent.putExtra("country", country);
+		
+		return intent;
+	}
+	
 	public static Intent showQuiz(Context c, long id)
 	{
 		Intent intent = new Intent(c, QuizActivity.class);

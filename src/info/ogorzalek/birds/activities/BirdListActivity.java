@@ -4,10 +4,12 @@ import info.ogorzalek.birds.R;
 import info.ogorzalek.birds.general.Backend.MetaResponse;
 import info.ogorzalek.birds.general.Routing;
 import info.ogorzalek.birds.models.Bird;
+import info.ogorzalek.birds.models.SearchFilter;
 import info.ogorzalek.birds.models.Bird.OnBirdListResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import android.app.Activity;
 import android.graphics.Typeface;
@@ -22,7 +24,7 @@ import android.widget.Toast;
 
 public class BirdListActivity extends Activity {
 
-	private Map<Integer, String> filters = new HashMap<Integer, String>();
+	private Map<String, String> filters = new HashMap<String, String>();
 	
 	private TextView filtersBlockTitle;
 	private TextView filtersBlockText;
@@ -32,13 +34,15 @@ public class BirdListActivity extends Activity {
 	
 	private ProgressBar birdListProgressBar;
 	
+	private SearchFilter searchFilter;
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bird_list);
-
+        
         filtersBlockTitle = (TextView) this.findViewById(R.id.bird_list_filters_title_label);
-        filtersBlockText = (TextView) this.findViewById(R.id.none_filters);
+        filtersBlockText = (TextView) this.findViewById(R.id.bird_list_filters);
         
         birdListBlockTitle = (TextView) this.findViewById(R.id.bird_list_block_title_label);
         birdListBlockLinearLayout = (LinearLayout) this.findViewById(R.id.bird_list_block_linear_layout);
@@ -51,6 +55,13 @@ public class BirdListActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
+		
+		searchFilter = SearchFilter.fromIntent(getIntent().getExtras());
+		filters = searchFilter.getFiltersMap();
+
+		// wypelnienie info o filtrach
+		decorateFilters();
+		
 		birdListBlockLinearLayout.removeAllViews();
 		Bird.list(getApplicationContext(), listener);
 	}
@@ -66,6 +77,22 @@ public class BirdListActivity extends Activity {
 	private void applyTypeface(Typeface t, TextView v)
 	{
 		v.setTypeface(t);
+	}
+	
+	private void decorateFilters() {
+		String filtersText = "";
+		boolean first = true;
+		
+		Set<String> set = filters.keySet();
+		for(String key : set) {
+			if(first)
+				first = false;
+			else
+				filtersText += "\n";
+			
+			filtersText += key + ": " + filters.get(key);
+		}
+		filtersBlockText.setText(filtersText);
 	}
 	
 	private OnBirdListResponse listener = new OnBirdListResponse() {
