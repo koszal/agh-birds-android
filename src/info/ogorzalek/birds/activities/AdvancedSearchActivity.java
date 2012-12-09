@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -17,6 +18,8 @@ import android.widget.TextView;
 public class AdvancedSearchActivity extends Activity{
 
 	private TextView title, subtitle, orderLabel, familyLabel, genusLabel, countryLabel;
+	
+	private EditText searchBox;
 	
 	private Spinner orderSpinner;
 	private Spinner familySpinner;
@@ -39,6 +42,8 @@ public class AdvancedSearchActivity extends Activity{
         familyLabel = (TextView) this.findViewById(R.id.search_family_label);
         genusLabel = (TextView) this.findViewById(R.id.search_genus_label);
         countryLabel = (TextView) this.findViewById(R.id.search_country_label);
+        
+        searchBox = (EditText) this.findViewById(R.id.search_box_edit);
         
         orderSpinner = (Spinner) this.findViewById(R.id.search_order_spinner);
         familySpinner = (Spinner) this.findViewById(R.id.search_family_spinner);
@@ -73,6 +78,7 @@ public class AdvancedSearchActivity extends Activity{
     	Typeface font = Typeface.createFromAsset(AdvancedSearchActivity.this.getAssets(), "fonts/chrysuni.ttf");
     	title.setTypeface(font);
     	subtitle.setTypeface(font);
+    	searchBox.setTypeface(font);
     	orderLabel.setTypeface(font);
     	familyLabel.setTypeface(font);
     	genusLabel.setTypeface(font);
@@ -83,7 +89,11 @@ public class AdvancedSearchActivity extends Activity{
 		
 		public void onClick(View v) {
 			
-			String order = null, family = null, genus = null, country = null;
+			String query = null, order = null, family = null, genus = null, country = null;
+			
+			if(searchBox.getText().toString().length() > 0){
+				query = searchBox.getText().toString();
+			}
 			
 			if(orderSpinner.getSelectedItemId() != 0) {
 				order = (String) orderSpinner.getSelectedItem();
@@ -101,7 +111,7 @@ public class AdvancedSearchActivity extends Activity{
 				country = (String) countrySpinner.getSelectedItem();
 			}
 			
-			Intent intent = Routing.showBirdList(AdvancedSearchActivity.this, order, family, genus, country);
+			Intent intent = Routing.showBirdList(AdvancedSearchActivity.this, query, order, family, genus, country);
 			startActivity(intent);
 		}
 	};

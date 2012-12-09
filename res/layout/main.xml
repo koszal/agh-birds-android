@@ -156,7 +156,7 @@
 						android:layout_alignParentTop="true" android:layout_marginRight="5dp"
 						android:layout_toLeftOf="@+id/main_search_box_button" android:ems="10"
 						android:background="@drawable/custom_edit_text_background"
-						android:paddingLeft="5dp">
+						android:paddingLeft="5dp" android:singleLine="true" android:textColor="@color/theme_text_gray">
 						<requestFocus />
 					</EditText>
 				</RelativeLayout>

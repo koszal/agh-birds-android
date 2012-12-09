@@ -33,9 +33,11 @@ public class Routing {
 		return intent;
 	}
 	
-	public static Intent showBirdList(Context c, String order, String family, String genus, String country)
+	public static Intent showBirdList(Context c, String query, String order, String family, String genus, String country)
 	{
 		Intent intent = new Intent(c, BirdListActivity.class);
+		if(query != null) 
+			intent.putExtra("query", query);
 		if(order != null) 
 			intent.putExtra("order", order);
 		if(family != null) 

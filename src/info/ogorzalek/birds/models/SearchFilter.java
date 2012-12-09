@@ -11,7 +11,7 @@ import com.google.gson.Gson;
 
 public class SearchFilter {
 
-	public String name = null;
+	public String query = null;
 	public String order = null;
 	public String family = null;
 	public String genus = null;
@@ -20,8 +20,8 @@ public class SearchFilter {
 	public HashMap<String, String> getFiltersMap() {
 		HashMap<String, String> map = new HashMap<String, String>();
 
-		if(name != null)
-			map.put("name", name);
+		if(query != null)
+			map.put("query", query);
 		if(order != null)
 			map.put("order", order);
 		if(family != null)
@@ -45,8 +45,11 @@ public class SearchFilter {
 		
 		SearchFilter searchFilter = new SearchFilter();
 	
-		if(extras.containsKey("name"))
-			searchFilter.name = extras.getString("name");
+		if(extras == null)
+			return searchFilter;
+		
+		if(extras.containsKey("query"))
+			searchFilter.query = extras.getString("query");
 		if(extras.containsKey("order"))
 			searchFilter.order = extras.getString("order");
 		if(extras.containsKey("family"))

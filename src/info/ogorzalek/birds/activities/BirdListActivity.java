@@ -63,7 +63,7 @@ public class BirdListActivity extends Activity {
 		decorateFilters();
 		
 		birdListBlockLinearLayout.removeAllViews();
-		Bird.list(getApplicationContext(), listener);
+		Bird.list(getApplicationContext(), listener, searchFilter);
 	}
 
 	private void applyTypeface()

@@ -2,6 +2,7 @@ package info.ogorzalek.birds.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,9 +33,9 @@ public class Bird {
 		return bird;
 	}
 	
-	public static void list(Context context, final OnBirdListResponse listener)
+	public static void list(Context context, final OnBirdListResponse listener, SearchFilter filter)
 	{
-		final String url = getUrl();
+		final String url = getUrl(filter);
 		
 		Backend backend = Backend.getInstance(context);
 		backend.get(new OnHttpGetResponseListener() {
@@ -59,7 +60,7 @@ public class Bird {
 			
 			public void onError(Exception e) {
 				listener.onError(e);
-				Log.d("BIRD", url);
+				//Log.d("BIRD", url);
 			}
 
 			public void onBeforeRequest() {
@@ -96,6 +97,24 @@ public class Bird {
 	public static String getUrl()
 	{
 		return Backend.BASE_URL + Bird.MODEL_URL;
+	}
+	
+	public static String getUrl(SearchFilter filter)
+	{
+		String url = getUrl();
+		Map<String, String> map = filter.getFiltersMap();
+		
+		boolean first = true;
+		for(String key : map.keySet()) {
+			if(first) {
+				url += "?"; 
+			} else {
+				url += "&";
+			}
+			url += key + "=" + map.get(key);
+		}
+		
+		return url;
 	}
 	
 	public static String getUrl(long id)
