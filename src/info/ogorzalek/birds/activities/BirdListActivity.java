@@ -1,7 +1,6 @@
 package info.ogorzalek.birds.activities;
 
 import info.ogorzalek.birds.R;
-import info.ogorzalek.birds.general.Backend.MetaResponse;
 import info.ogorzalek.birds.general.Routing;
 import info.ogorzalek.birds.models.Bird;
 import info.ogorzalek.birds.models.SearchFilter;
@@ -97,7 +96,9 @@ public class BirdListActivity extends Activity {
 	
 	private OnBirdListResponse listener = new OnBirdListResponse() {
 
-		public void onBirdListResponse(List<Bird> birds, MetaResponse meta) {
+		public void onBirdListResponse(List<Bird> birds) {
+
+			birdListProgressBar.setVisibility(View.VISIBLE);
 			
 			Typeface font = Typeface.createFromAsset(getAssets(), "fonts/chrysuni.ttf");
 			LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -124,20 +125,15 @@ public class BirdListActivity extends Activity {
 				
 				birdListBlockLinearLayout.addView(current);
 			}
+			
+
+			birdListProgressBar.setVisibility(View.GONE);
 		}
 
 		public void onError(Exception e) {
 			Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
 		}
 
-		public void onBeforeRequest() {
-			birdListProgressBar.setVisibility(View.VISIBLE);
-		}
-
-		public void onAfterRequest() {
-			birdListProgressBar.setVisibility(View.GONE);
-			
-		}
 		
 	};	
 	

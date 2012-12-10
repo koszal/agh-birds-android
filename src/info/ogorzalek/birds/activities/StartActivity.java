@@ -3,6 +3,8 @@ package info.ogorzalek.birds.activities;
 import info.ogorzalek.birds.R;
 import info.ogorzalek.birds.general.Backend;
 import info.ogorzalek.birds.general.Routing;
+import info.ogorzalek.birds.models.ApiKey;
+import info.ogorzalek.birds.models.ApiKey.OnApiKeyResponse;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -14,6 +16,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 
@@ -100,11 +103,34 @@ public class StartActivity extends Activity {
         
         applyTypeface();
         
-        Backend.getInstance(this);
+        Backend.instance(this);
         
     }
-   
-    private void applyTypeface()
+       
+    @Override
+	protected void onResume() {
+    	
+    	ApiKey apiKey = ApiKey.getApiKey(this);
+    	if(apiKey.key == null)
+    		ApiKey.register(this, onApiKeyListener);
+    	
+		super.onResume();
+	}
+
+    private OnApiKeyResponse onApiKeyListener = new OnApiKeyResponse() {
+		
+		public void onError(Exception e) {
+			Toast.makeText(StartActivity.this, "Error in creating ApiKey", Toast.LENGTH_SHORT).show();
+		}
+		
+		public void onApiKeyResponse(ApiKey apiKey) {
+			Toast.makeText(StartActivity.this, "ApiKey created successfully!", Toast.LENGTH_SHORT).show();
+			
+		}
+	};
+
+
+	private void applyTypeface()
     {
     	Typeface font = Typeface.createFromAsset(getAssets(), "fonts/chrysuni.ttf");
     	searchBoxTitleLabel.setTypeface(font);

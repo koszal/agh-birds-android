@@ -15,8 +15,7 @@ import android.content.Context;
 import android.media.MediaPlayer.OnBufferingUpdateListener;
 import android.util.Log;
 import info.ogorzalek.birds.general.Backend;
-import info.ogorzalek.birds.general.Backend.MetaResponse;
-import info.ogorzalek.birds.general.Backend.OnHttpGetResponseListener;
+import info.ogorzalek.birds.general.Backend.OnHttpResponseListener;
 
 public class Bird {
 
@@ -37,12 +36,12 @@ public class Bird {
 	{
 		final String url = getUrl(filter);
 		
-		Backend backend = Backend.getInstance(context);
-		backend.get(new OnHttpGetResponseListener() {
+		Backend backend = Backend.instance(context);
+		backend.get(new OnHttpResponseListener() {
 			public void onResponse(JSONObject data) {
 				try {
 					List<Bird> birds = new ArrayList<Bird>();
-					MetaResponse metaResponse = MetaResponse.fromJSON(data.getJSONObject("meta"));
+					//MetaResponse metaResponse = MetaResponse.fromJSON(data.getJSONObject("meta"));
 					
 					JSONArray array = data.getJSONArray("objects");
 					for(int i = 0; i < array.length(); i++)
@@ -50,7 +49,7 @@ public class Bird {
 						birds.add(Bird.fromJSON(array.getJSONObject(i)));
 					}
 					
-					listener.onBirdListResponse(birds, metaResponse);
+					listener.onBirdListResponse(birds);
 					
 				} catch (JSONException e) {
 					this.onError(e);
@@ -62,19 +61,11 @@ public class Bird {
 				listener.onError(e);
 				//Log.d("BIRD", url);
 			}
-
-			public void onBeforeRequest() {
-				listener.onBeforeRequest();
-			}
-
-			public void onAfterRequest() {
-				listener.onAfterRequest();
-			}
 			
 		}, url);
 	}
 	
-	public static void get(Context context, OnHttpGetResponseListener listener)
+	public static void get(Context context, OnHttpResponseListener listener)
 	{
 		
 	}
@@ -88,10 +79,8 @@ public class Bird {
 	
 	public interface OnBirdListResponse
 	{
-		void onBeforeRequest();
-		void onBirdListResponse(List<Bird> birds, MetaResponse meta);
+		void onBirdListResponse(List<Bird> birds);
 		void onError(Exception e);
-		void onAfterRequest();
 	}
 	
 	public static String getUrl()

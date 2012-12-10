@@ -14,9 +14,7 @@ import android.content.Context;
 import android.media.MediaPlayer.OnBufferingUpdateListener;
 import android.util.Log;
 import info.ogorzalek.birds.general.Backend;
-import info.ogorzalek.birds.general.Backend.MetaResponse;
-import info.ogorzalek.birds.general.Backend.OnHttpGetResponseListener;
-import info.ogorzalek.birds.general.Backend.OnHttpPostResponseListener;
+import info.ogorzalek.birds.general.Backend.OnHttpResponseListener;
 
 public class Quiz {
 
@@ -40,12 +38,11 @@ public class Quiz {
 	{
 		final String url = getUrl();
 		
-		Backend backend = Backend.getInstance(context);
-		backend.get(new OnHttpGetResponseListener() {
+		Backend backend = Backend.instance(context);
+		backend.get(new OnHttpResponseListener() {
 			public void onResponse(JSONObject data) {
 				try {
 					List<Quiz> quizes = new ArrayList<Quiz>();
-					MetaResponse metaResponse = MetaResponse.fromJSON(data.getJSONObject("meta"));
 					
 					JSONArray array = data.getJSONArray("objects");
 					for(int i = 0; i < array.length(); i++)
@@ -53,7 +50,7 @@ public class Quiz {
 						quizes.add(Quiz.fromJSON(array.getJSONObject(i)));
 					}
 					
-					listener.onQuizListResponse(quizes, metaResponse);
+					listener.onQuizListResponse(quizes);
 					
 				} catch (JSONException e) {
 					this.onError(e);
@@ -79,8 +76,8 @@ public class Quiz {
 	{
 		final String url = getUrl(id);
 		
-		Backend backend = Backend.getInstance(context);
-		backend.get(new OnHttpGetResponseListener() {
+		Backend backend = Backend.instance(context);
+		backend.get(new OnHttpResponseListener() {
 			
 			public void onResponse(JSONObject data) {
 				
@@ -110,8 +107,8 @@ public class Quiz {
 	{
 		final String url = getUrl();
 		
-		Backend backend = Backend.getInstance(context);
-		backend.post(new OnHttpPostResponseListener() {
+		Backend backend = Backend.instance(context);
+		backend.post(new OnHttpResponseListener() {
 			
 			public void onResponse(JSONObject data) {
 				
@@ -123,14 +120,14 @@ public class Quiz {
 			public void onError(Exception e) {
 				listener.onError(e);
 			}
-		}, url);
+		}, url, null);
 		
 	}
 	
 	public static class OnQuizResponseAdapter implements OnQuizResponse
 	{
 		public void onQuizResponse(Quiz bird) {}
-		public void onQuizListResponse(List<Quiz> quizes, MetaResponse meta) {}
+		public void onQuizListResponse(List<Quiz> quizes) {}
 		public void onError(Exception e) {}
 	}
 	
@@ -141,7 +138,7 @@ public class Quiz {
 	}
 	
 	public interface OnQuizListResponse {
-		void onQuizListResponse(List<Quiz> quizes, MetaResponse meta);
+		void onQuizListResponse(List<Quiz> quizes);
 		void onError(Exception e);
 	}
 	

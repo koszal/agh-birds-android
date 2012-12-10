@@ -4,7 +4,6 @@ import java.util.List;
 
 import info.ogorzalek.birds.R;
 import info.ogorzalek.birds.general.Backend;
-import info.ogorzalek.birds.general.Backend.MetaResponse;
 import info.ogorzalek.birds.general.Routing;
 import info.ogorzalek.birds.models.Quiz;
 import info.ogorzalek.birds.models.Quiz.OnQuizListResponse;
@@ -59,7 +58,7 @@ public class QuizLauncherActivity extends Activity {
 		super.onResume();
 		Quiz.list(getApplicationContext(), new OnQuizListResponse() {
 			
-			public void onQuizListResponse(List<Quiz> quizes, MetaResponse meta) {
+			public void onQuizListResponse(List<Quiz> quizes) {
 				for(Quiz quiz : quizes)
 				{
 					TextView tv = new TextView(getBaseContext());
