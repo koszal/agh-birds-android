@@ -23,11 +23,10 @@ public class Quiz {
 	public static String MODEL_URL = "quiz/";
 	
 	public long id;
+	public String api_user_key;
 	public int time_limit;
+	public int is_closed;
 	public String created_at;
-	public String deleted_at;
-	public String closed_at;
-	public boolean active;
 	public List<Question> questions;
 
 	public static Quiz fromJSON(JSONObject json)

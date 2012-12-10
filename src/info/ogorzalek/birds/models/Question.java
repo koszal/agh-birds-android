@@ -28,13 +28,10 @@ public class Question {
 	public String answer2;
 	public String answer3;
 	public String answer4;
-	public int correct;
-	public int user_answer;
-	public String created_at;
-	public String modified_at;
-	public String deleted_at;
-	public boolean active;
+	public int correct_answer;
+	public int users_answer;
 	public int quiz_id;
+	public int media_id;
 	
 	// layouts
 
