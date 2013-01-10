@@ -48,4 +48,8 @@ public class Media {
 		return Backend.BASE_URL + Media.MODEL_URL;
 	}
 	
+	public String getResourceUrl() {
+		return Backend.BASE_MEDIA_URL + filename;
+	}
+	
 }

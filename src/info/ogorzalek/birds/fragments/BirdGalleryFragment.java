@@ -1,12 +1,24 @@
 package info.ogorzalek.birds.fragments;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.koushikdutta.urlimageviewhelper.UrlImageViewHelper;
+
 import info.ogorzalek.birds.R;
+import info.ogorzalek.birds.general.Routing;
+import info.ogorzalek.birds.models.Bird;
+import info.ogorzalek.birds.models.Country;
+import info.ogorzalek.birds.models.Bird.OnBirdResponse;
+import info.ogorzalek.birds.models.Media;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
@@ -18,6 +30,8 @@ public class BirdGalleryFragment extends Fragment {
 
 	private TextView galleryTitle;
 	private GridView galleryGridView;
+	
+	private ImageAdapter adapter;
 	
 	@Override
 	public void onPause() {
@@ -36,16 +50,37 @@ public class BirdGalleryFragment extends Fragment {
 
 		galleryTitle = (TextView) view.findViewById(R.id.bird_view_media_gallery_title);
 		
-		galleryGridView = (GridView) view.findViewById(R.id.bird_view_media_gallery_grid);
-		galleryGridView.setAdapter(new ImageAdapter(getActivity().getApplicationContext()));
+		adapter = new ImageAdapter(getActivity().getApplicationContext());
 		
+		galleryGridView = (GridView) view.findViewById(R.id.bird_view_media_gallery_grid);
+		galleryGridView.setAdapter(adapter);
+		
+		applyTypeface();
 		
 		return view;
 	}
 	
+	@Override
+	public void onResume() {
+		Bird.get(getActivity(), onBirdResponse, getActivity().getIntent().getExtras().getInt("birdId"));
+		super.onResume();
+	}
+	
+	private void applyTypeface()
+    {
+    	Typeface font = Typeface.createFromAsset(getActivity().getApplicationContext().getAssets(), "fonts/chrysuni.ttf");
+    	galleryTitle.setTypeface(font);
+    }
+	
 	private class ImageAdapter extends BaseAdapter
 	{
 		private Context context;
+		private List<Media> pictures = new ArrayList<Media>();
+		
+		public void setPictures(List<Media> pics) {
+			pictures = pics;
+			this.notifyDataSetChanged();
+		}
 		
 		public ImageAdapter(Context ctx)
 		{
@@ -53,8 +88,7 @@ public class BirdGalleryFragment extends Fragment {
 		}
 
 		public int getCount() {
-			// TODO Auto-generated method stub
-			return 15;
+			return pictures.size();
 		}
 
 		public Object getItem(int position) {
@@ -67,37 +101,46 @@ public class BirdGalleryFragment extends Fragment {
 			return 0;
 		}
 
-		public View getView(int position, View convertView, ViewGroup parent) {
+		public View getView(final int position, View convertView, ViewGroup parent) {
 			ImageView imageView;
 	        if (convertView == null) {  // if it's not recycled, initialize some attributes
 	            imageView = new ImageView(context);
-	            //imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
-	            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+	            imageView.setLayoutParams(new GridView.LayoutParams(155, 155));
+	            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 	            imageView.setPadding(1, 1, 1, 1);
 	        } else {
 	            imageView = (ImageView) convertView;
 	        }
-
-	        imageView.setImageResource(R.drawable.bird_mock_photo_100);
 	        
-//	        DisplayMetrics metrics = new DisplayMetrics();
-//	        getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
-//	        switch(metrics.densityDpi){
-//	             case DisplayMetrics.DENSITY_LOW:
-//	                        imageView.setLayoutParams(new GridView.LayoutParams(120, 120));
-//	                        break;
-//	             case DisplayMetrics.DENSITY_MEDIUM:
-//	                        imageView.setLayoutParams(new GridView.LayoutParams(120, 120));
-//	                        break;
-//	             case DisplayMetrics.DENSITY_HIGH:
-//	                         imageView.setLayoutParams(new GridView.LayoutParams(120, 120));
-//	                         break;
-//	        }
+	        UrlImageViewHelper.setUrlDrawable(imageView, pictures.get(position).getResourceUrl(), R.drawable.ic_launcher);
+	        imageView.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					startActivity(Routing.showPicture(BirdGalleryFragment.this.getActivity(), pictures.get(position).getResourceUrl()));					
+				}
+			});
 	        
 	        return imageView;
 		}
 		
 	}
+	
+	private OnBirdResponse onBirdResponse = new OnBirdResponse() {
+		
+		public void onError(Exception e) {
+			
+		}
+		
+		public void onBirdResponse(Bird bird) {
+			for(Media media : bird.medias) {
+				if(media.resource_type.equals("sound"))
+					bird.medias.remove(media);
+			}
+			adapter.setPictures(bird.medias);
+			
+		}
+	};
 
 
 }

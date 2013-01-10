@@ -3,14 +3,12 @@
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
 	android:background="@color/theme_global_background">
 	<RelativeLayout android:layout_width="fill_parent"
-		android:layout_height="fill_parent" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_marginBottom="15dp" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:background="@drawable/full_block_with_footer" android:padding="10dp">
+		android:layout_height="match_parent" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_marginBottom="15dp" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:background="@drawable/full_blcok_backgrond_footer" android:padding="10dp" android:paddingBottom="20dp">
 		<TextView android:id="@+id/bird_view_media_gallery_title"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
 			android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
-			android:text="Gallery" android:textColor="@color/theme_text_blue"
-			android:textSize="16dp" />
-		<GridView android:id="@+id/bird_view_media_gallery_grid"
-			android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignLeft="@+id/bird_view_media_gallery_title" android:layout_below="@+id/bird_view_media_gallery_title" android:layout_marginBottom="4dp" android:layout_marginTop="6dp" android:numColumns="4"></GridView>
+			android:text="Media files" android:textColor="@color/theme_text_blue" android:textSize="16dp"/>
+		<LinearLayout android:id="@+id/bird_view_media_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_alignLeft="@+id/bird_view_media_gallery_title" android:layout_below="@+id/bird_view_media_gallery_title" android:layout_marginTop="10dp" android:orientation="vertical"></LinearLayout>
 	</RelativeLayout>
 
 </RelativeLayout>

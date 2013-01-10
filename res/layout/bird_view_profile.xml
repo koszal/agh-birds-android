@@ -13,29 +13,20 @@
 			android:layout_marginRight="5dp" android:background="@color/theme_block_background_gray"
 			android:padding="3dp">
 			<ImageView android:id="@+id/bird_view_profile_image"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
-				android:src="@drawable/bird_mock_photo_100" />
+				android:layout_width="60dp" android:layout_height="60dp" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:scaleType="centerCrop" android:src="@drawable/bird_mock_photo_100"/>
 		</RelativeLayout>
 		<TextView android:id="@+id/bird_view_profile_name"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
 			android:layout_alignTop="@+id/bird_view_profile_image_layout"
 			android:layout_toRightOf="@+id/bird_view_profile_image_layout"
 			android:text="Blue Tit" android:textColor="@color/theme_text_blue"
-			android:textSize="16dp" />
+			android:textSize="20dp" />
 		<TextView android:id="@+id/bird_view_profile_name_latin"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
 			android:layout_below="@+id/bird_view_profile_name"
 			android:layout_toRightOf="@+id/bird_view_profile_image_layout"
 			android:text="(Cyanistes caeruleus)" android:textColor="@color/theme_text_light_gray"
 			android:textSize="12dp" />
-		<TextView android:id="@+id/bird_view_profile_description"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:layout_alignLeft="@+id/bird_view_profile_name_latin"
-			android:layout_below="@+id/bird_view_profile_name_latin"
-			android:layout_marginTop="3dp" android:maxLines="2"
-			android:text="A small passerine bird in the tit family Paridae."
-			android:textColor="@color/theme_text_gray" android:textSize="14dp" />
 	</RelativeLayout>
 	<LinearLayout android:id="@+id/bird_view_profile_linear_layout"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"

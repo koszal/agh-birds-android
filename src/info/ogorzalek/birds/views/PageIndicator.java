@@ -103,8 +103,8 @@ public class PageIndicator extends View {
 	
 	private void drawDot(Bitmap dot, int position, Canvas canvas, Paint paint)
 	{
-		float dist = (width - COUNT*LENGTH) / (COUNT - 1);
-		float posX = position * (dist + LENGTH); //px
+		float dist = ((float)width - (float)(COUNT*LENGTH)) / ((float)(COUNT - 1))-5;
+		float posX = (float)position * (dist + LENGTH); //px
 		float posY = (height - LENGTH) /2;
 		canvas.drawBitmap(dot, posX, posY, paint);
 	}

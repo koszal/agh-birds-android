@@ -62,7 +62,7 @@ public class QuizPageIndicator extends View {
 		
 		Resources res = getResources();
 		colorInactive = res.getColor(R.color.theme_text_light_gray);
-		colorActive = res.getColor(R.color.theme_blue_light);
+		colorActive = res.getColor(R.color.theme_yellow_light);
 		colorText = Color.BLACK;
 		
 		//Log.d("adsfasd", grayDot.getWidth() + " ");

@@ -1,6 +1,9 @@
 package info.ogorzalek.birds.fragments;
 
 import info.ogorzalek.birds.R;
+import info.ogorzalek.birds.models.Bird;
+import info.ogorzalek.birds.models.Bird.OnBirdResponse;
+import info.ogorzalek.birds.models.Country;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -40,12 +43,40 @@ public class BirdMapFragment extends Fragment {
 		return view;
 	}
 	
+	@Override
+	public void onResume() {
+		Bird.get(getActivity(), onBirdResponse, getActivity().getIntent().getExtras().getInt("birdId"));
+		super.onResume();
+	}
+	
 	private void applyTypeface()
     {
     	Typeface font = Typeface.createFromAsset(getActivity().getApplicationContext().getAssets(), "fonts/chrysuni.ttf");
-    	//mapTitle.setTypeface(font);
+
     	countriesTitle.setTypeface(font);
     	countriesText.setTypeface(font);
     }
+	
+	private OnBirdResponse onBirdResponse = new OnBirdResponse() {
+		
+		public void onError(Exception e) {
+			
+		}
+		
+		public void onBirdResponse(Bird bird) {
+			
+			StringBuilder builder = new StringBuilder();
+			
+			for(Country country : bird.countries) {
+				builder.append(country.name);
+				if(bird.countries.indexOf(country) != (bird.countries.size()-1)) {
+					builder.append(", ");
+				}
+			}
+			
+			countriesText.setText(builder.toString());
+			
+		}
+	};
 
 }

@@ -8,6 +8,8 @@ import info.ogorzalek.birds.fragments.BirdGalleryFragment;
 import info.ogorzalek.birds.fragments.BirdMapFragment;
 import info.ogorzalek.birds.fragments.BirdMediaFragment;
 import info.ogorzalek.birds.fragments.BirdProfileFragment;
+import info.ogorzalek.birds.models.Bird;
+import info.ogorzalek.birds.models.Bird.OnBirdResponse;
 import info.ogorzalek.birds.views.PageIndicator;
 import android.app.Activity;
 import android.content.Context;
@@ -25,9 +27,13 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class BirdActivity extends FragmentActivity {
 
+	public int birdId;
+	public Bird bird = null;
+	
 	private ViewPager awesomePager;
 	private static int NUM_AWESOME_VIEWS = 20;
 	private Context cxt;
@@ -52,9 +58,19 @@ public class BirdActivity extends FragmentActivity {
 		LinearLayout lin = (LinearLayout) this.findViewById(R.id.testlin);
 		indi = new PageIndicator(getApplicationContext());
 		lin.addView(indi);
-		
-		//debug = (TextView) this.findViewById(R.id.textView1);
 	}
+
+
+	@Override
+	protected void onResume() {
+		
+		birdId = getIntent().getExtras().getInt("birdId");
+		
+		Bird.get(this, onBirdResponse, birdId);
+		super.onResume();
+	}
+
+
 
 	private class AwesomePagerAdapter extends FragmentPagerAdapter {
 
@@ -102,6 +118,17 @@ public class BirdActivity extends FragmentActivity {
 		public void onPageScrollStateChanged(int arg0) {
 			// TODO Auto-generated method stub
 			
+		}
+	};
+	
+	private OnBirdResponse onBirdResponse = new OnBirdResponse() {
+		
+		public void onError(Exception e) {
+			Toast.makeText(BirdActivity.this, "Internet connection error.", Toast.LENGTH_SHORT).show();
+		}
+		
+		public void onBirdResponse(Bird bird) {
+			BirdActivity.this.bird = bird;
 		}
 	};
 

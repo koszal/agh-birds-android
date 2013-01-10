@@ -23,7 +23,17 @@ public class Bird {
 	
 	public long id;
 	public String name;
+	public String latin_name;
 	public String description;
+	public String order;
+	public String family;
+	public String genus;
+	public String species;
+	public String created_at;
+	public String modified_at;
+	public String thumbnail;
+	public List<Country> countries;
+	public List<Media> medias;
 
 	public static Bird fromJSON(JSONObject json)
 	{
@@ -65,8 +75,20 @@ public class Bird {
 		}, url);
 	}
 	
-	public static void get(Context context, OnHttpResponseListener listener)
+	public static void get(Context context, final OnBirdResponse listener, int id)
 	{
+		Backend backend = Backend.instance(context);
+		backend.get(new OnHttpResponseListener() {
+			
+			public void onResponse(JSONObject data) {
+				Bird item = Bird.fromJSON(data);
+				listener.onBirdResponse(item);
+			}
+			
+			public void onError(Exception e) {
+				listener.onError(e);				
+			}
+		}, getUrl(id));
 		
 	}
 	
@@ -106,9 +128,13 @@ public class Bird {
 		return url;
 	}
 	
-	public static String getUrl(long id)
+	public static String getUrl(int id)
 	{
 		return Backend.BASE_URL + Bird.MODEL_URL + id;
+	}
+	
+	public String getThumbnail() {
+		return Backend.BASE_MEDIA_URL + this.thumbnail;
 	}
 	
 }

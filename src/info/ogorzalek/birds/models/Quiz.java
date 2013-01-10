@@ -124,6 +124,25 @@ public class Quiz {
 		
 	}
 	
+	public void finish(Context context, final OnQuizResponse listener) {
+		final String url = getFinishUrl();
+		
+		Backend backend = Backend.instance(context);
+		backend.post(new OnHttpResponseListener() {
+			
+			@Override
+			public void onResponse(JSONObject data) {
+				Quiz quiz = Quiz.fromJSON(data);
+				listener.onQuizResponse(quiz);
+			}
+			
+			@Override
+			public void onError(Exception e) {
+				listener.onError(e);
+			}
+		}, url, null);
+	}
+	
 	public static class OnQuizResponseAdapter implements OnQuizResponse
 	{
 		public void onQuizResponse(Quiz bird) {}
@@ -150,6 +169,10 @@ public class Quiz {
 	public static String getUrl(long id)
 	{
 		return Backend.BASE_URL + Quiz.MODEL_URL + id;
+	}
+	
+	public String getFinishUrl() {
+		return Backend.BASE_URL + Quiz.MODEL_URL + "?quiz_id=" + this.id;
 	}
 	
 	

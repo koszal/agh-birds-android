@@ -10,12 +10,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.koushikdutta.urlimageviewhelper.UrlImageViewHelper;
+
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -109,13 +112,16 @@ public class BirdListActivity extends Activity {
 				current.setTag(bird.id);
 				current.setOnClickListener(new OnClickListener() {
 					public void onClick(View v) {
-						long id = (Long) v.getTag();
+						int id = ((Long) v.getTag()).intValue();
 						startActivity(Routing.showBird(getApplicationContext(), id));
 					}
 				});
 				
 				TextView birdName = (TextView) current.findViewById(R.id.bird_name);
 				TextView birdDescription = (TextView) current.findViewById(R.id.bird_description);
+				ImageView birdImage = (ImageView) current.findViewById(R.id.bird_image);
+				
+		        UrlImageViewHelper.setUrlDrawable(birdImage, bird.getThumbnail(), R.drawable.ic_launcher);
 
 				BirdListActivity.this.applyTypeface(font, birdName);
 				BirdListActivity.this.applyTypeface(font, birdDescription);

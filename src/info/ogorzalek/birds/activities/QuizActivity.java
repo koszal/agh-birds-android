@@ -1,13 +1,17 @@
 package info.ogorzalek.birds.activities;
 
+import com.koushikdutta.urlimageviewhelper.UrlImageViewHelper;
+
 import info.ogorzalek.birds.R;
 import info.ogorzalek.birds.general.Utils;
 import info.ogorzalek.birds.models.Question;
+import info.ogorzalek.birds.models.Question.OnQuestionResponse;
 import info.ogorzalek.birds.models.Quiz;
 import info.ogorzalek.birds.models.Quiz.OnQuizResponse;
 import info.ogorzalek.birds.views.QuizPager;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -17,6 +21,9 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -95,6 +102,26 @@ public class QuizActivity extends Activity {
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			
 			View view = inflater.inflate(R.layout.quiz_question, null);
+			
+			Button finishQuiz = (Button) view.findViewById(R.id.quiz_finish_button);
+			finishQuiz.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					quiz.finish(QuizActivity.this, new OnQuizResponse() {
+						
+						@Override
+						public void onQuizResponse(Quiz bird) {
+							QuizActivity.this.finish();
+						}
+						
+						@Override
+						public void onError(Exception e) {
+							Toast.makeText(QuizActivity.this, "Internet connection error!", Toast.LENGTH_SHORT).show();
+						}
+					});
+				}
+			});
 
 			TextView title = (TextView) view.findViewById(R.id.question_title);
 			TextView text = (TextView) view.findViewById(R.id.question_text);
@@ -103,17 +130,24 @@ public class QuizActivity extends Activity {
 			TextView answer3 = (TextView) view.findViewById(R.id.question_answer_3);
 			TextView answer4 = (TextView) view.findViewById(R.id.question_answer_4);
 			
+			LinearLayout answersLayout = (LinearLayout) view.findViewById(R.id.question_answers_layout);
+			
+			ImageView image = (ImageView) view.findViewById(R.id.question_image);
+	        //UrlImageViewHelper.setUrlDrawable(image, , R.drawable.ic_launcher);
+			
 			title.setTypeface(font);
 			text.setTypeface(font);
 			answer1.setTypeface(font);
 			answer2.setTypeface(font);
 			answer3.setTypeface(font);
 			answer4.setTypeface(font);
+			finishQuiz.setTypeface(font);
 			
 			if(quiz != null)
 			{
 				Question current = quiz.questions.get(position);
 
+		        UrlImageViewHelper.setUrlDrawable(image, current.media.getResourceUrl(), R.drawable.ic_launcher);
 				
 				title.setText("Question " + (position + 1));
 				text.setText(current.question);
@@ -121,11 +155,56 @@ public class QuizActivity extends Activity {
 				answer2.setText(current.answer2);
 				answer3.setText(current.answer3);
 				answer4.setText(current.answer4);
-
-				answer1.setOnClickListener(new QuizActivity.OnAnswerSelectedListener(current, 1));
-				answer2.setOnClickListener(new QuizActivity.OnAnswerSelectedListener(current, 2));
-				answer3.setOnClickListener(new QuizActivity.OnAnswerSelectedListener(current, 3));
-				answer4.setOnClickListener(new QuizActivity.OnAnswerSelectedListener(current, 4));
+				
+				if(quiz.is_closed == 0) {
+					if(current.users_answer == 1) 			
+						answer1.setBackgroundColor(getResources().getColor(R.color.theme_yellow_light));
+					if(current.users_answer == 2) 			
+						answer2.setBackgroundColor(getResources().getColor(R.color.theme_yellow_light));
+					if(current.users_answer == 3) 			
+						answer3.setBackgroundColor(getResources().getColor(R.color.theme_yellow_light));
+					if(current.users_answer == 4) 			
+						answer4.setBackgroundColor(getResources().getColor(R.color.theme_yellow_light));
+					
+					answer1.setOnClickListener(new QuizActivity.OnAnswerSelectedListener(current, 1, answersLayout));
+					answer2.setOnClickListener(new QuizActivity.OnAnswerSelectedListener(current, 2, answersLayout));
+					answer3.setOnClickListener(new QuizActivity.OnAnswerSelectedListener(current, 3, answersLayout));
+					answer4.setOnClickListener(new QuizActivity.OnAnswerSelectedListener(current, 4, answersLayout));
+				} else {
+					finishQuiz.setVisibility(View.GONE);
+					if(current.users_answer == 1) {			
+						answer1.setBackgroundColor(getResources().getColor(R.color.theme_pink_light));
+						answer1.setTextColor(getResources().getColor(R.color.theme_text_white));
+					}
+					if(current.users_answer == 2) {		
+						answer2.setBackgroundColor(getResources().getColor(R.color.theme_pink_light));
+						answer2.setTextColor(getResources().getColor(R.color.theme_text_white));
+					}
+					if(current.users_answer == 3) {			
+						answer3.setBackgroundColor(getResources().getColor(R.color.theme_pink_light));
+						answer3.setTextColor(getResources().getColor(R.color.theme_text_white));
+					}
+					if(current.users_answer == 4) {			
+						answer4.setBackgroundColor(getResources().getColor(R.color.theme_pink_light));
+						answer4.setTextColor(getResources().getColor(R.color.theme_text_white));
+					}
+					if(current.correct_answer == 1) {			
+						answer1.setBackgroundColor(getResources().getColor(R.color.theme_green_light));
+						answer1.setTextColor(getResources().getColor(R.color.theme_text_white));
+					}
+					if(current.correct_answer == 2) {			
+						answer2.setBackgroundColor(getResources().getColor(R.color.theme_green_light));
+						answer2.setTextColor(getResources().getColor(R.color.theme_text_white));
+					}
+					if(current.correct_answer == 3) {			
+						answer3.setBackgroundColor(getResources().getColor(R.color.theme_green_light));
+						answer3.setTextColor(getResources().getColor(R.color.theme_text_white));
+					}
+					if(current.correct_answer == 4) {			
+						answer4.setBackgroundColor(getResources().getColor(R.color.theme_green_light));
+						answer4.setTextColor(getResources().getColor(R.color.theme_text_white));
+					}
+				}
 				
 			}
 			
@@ -181,55 +260,51 @@ public class QuizActivity extends Activity {
 
 		private int answer;
 		private Question question;
+		private View view;
 		
-		public OnAnswerSelectedListener(Question question, int answer)
+		public OnAnswerSelectedListener(Question question, int answer, View v)
 		{
 			this.question = question;
 			this.answer = answer;
+			this.view = v;
 		}
 		
 		public void onClick(View v) {
-			// odznaczyc
-//			if(answer == question.user_answer)
-//			{
-//				question.user_answer = 0;
-//				switch(answer) {
-//				case 1:
-//					unmark(question.answer1_view); break;
-//				case 2:
-//					unmark(question.answer2_view); break;
-//				case 3:
-//					unmark(question.answer3_view); break;
-//				case 4:
-//					unmark(question.answer4_view); break;
-//				}
-//			} else if(question.user_answer != 0) { // odznaczyc stare, zaznaczyc nowe
-//				question.user_answer = answer;
-//				switch(question.user_answer) {
-//				case 1:
-//					unmark(question.answer1_view); break;
-//				case 2:
-//					unmark(question.answer2_view); break;
-//				case 3:
-//					unmark(question.answer3_view); break;
-//				case 4:
-//					unmark(question.answer4_view); break;
-//				}
-//				mark((TextView) v);
-//			} else {
-//				mark((TextView) v);
-//			}
+			question.users_answer = answer;
+			question.answer(QuizActivity.this, new OnQuestionResponse() {
+				
+				@Override
+				public void onQuestion(Question question) {
+					Toast.makeText(QuizActivity.this, "ok", Toast.LENGTH_SHORT).show();
+				}
+				
+				@Override
+				public void onError(Exception e) {
+					Toast.makeText(QuizActivity.this, "ok", Toast.LENGTH_SHORT).show();
+				}
+			}, answer);
+			QuizActivity.this.adapter.notifyDataSetChanged();
+			redraw();
 			
 		}
 		
-		private void mark(TextView v) {
-			v.setBackgroundColor(v.getContext().getResources().getColor(R.color.theme_green_light));
-			v.setTextColor(v.getContext().getResources().getColor(R.color.theme_text_white));
-		}
-		
-		private void unmark(TextView v) {
-			v.setBackgroundColor(v.getContext().getResources().getColor(R.color.theme_block_background_gray));
-			v.setTextColor(v.getContext().getResources().getColor(R.color.theme_text_gray));
+		public void redraw() {
+			TextView answer1 = (TextView) view.findViewById(R.id.question_answer_1);
+			TextView answer2 = (TextView) view.findViewById(R.id.question_answer_2);
+			TextView answer3 = (TextView) view.findViewById(R.id.question_answer_3);
+			TextView answer4 = (TextView) view.findViewById(R.id.question_answer_4);
+			answer1.setBackgroundColor(getResources().getColor(R.color.theme_block_background_gray));
+			answer2.setBackgroundColor(getResources().getColor(R.color.theme_block_background_gray));
+			answer3.setBackgroundColor(getResources().getColor(R.color.theme_block_background_gray));
+			answer4.setBackgroundColor(getResources().getColor(R.color.theme_block_background_gray));
+			if(answer == 1) 			
+				answer1.setBackgroundColor(getResources().getColor(R.color.theme_yellow_light));
+			if(answer == 2) 			
+				answer2.setBackgroundColor(getResources().getColor(R.color.theme_yellow_light));
+			if(answer == 3) 			
+				answer3.setBackgroundColor(getResources().getColor(R.color.theme_yellow_light));
+			if(answer == 4) 			
+				answer4.setBackgroundColor(getResources().getColor(R.color.theme_yellow_light));
 		}
 		
 	}

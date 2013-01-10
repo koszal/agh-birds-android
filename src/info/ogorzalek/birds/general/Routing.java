@@ -4,6 +4,7 @@ import info.ogorzalek.birds.activities.AboutActivity;
 import info.ogorzalek.birds.activities.AdvancedSearchActivity;
 import info.ogorzalek.birds.activities.BirdActivity;
 import info.ogorzalek.birds.activities.BirdListActivity;
+import info.ogorzalek.birds.activities.PictureActivity;
 import info.ogorzalek.birds.activities.QuizActivity;
 import info.ogorzalek.birds.activities.QuizActivity;
 import info.ogorzalek.birds.activities.QuizLauncherActivity;
@@ -13,7 +14,7 @@ import android.content.Intent;
 
 public class Routing {
 
-	public static Intent showBird(Context c, long id)
+	public static Intent showBird(Context c, int id)
 	{
 		Intent intent = new Intent(c, BirdActivity.class);
 		intent.putExtra("birdId", id);
@@ -81,5 +82,10 @@ public class Routing {
 		return intent;
 	}
 	
+	public static Intent showPicture(Context c, String url) {
+		Intent intent = new Intent(c, PictureActivity.class);
+		intent.putExtra("pictureUrl", url);
+		return intent;
+	}
 	
 }

@@ -36,34 +36,16 @@ import android.os.Handler;
 public class Backend {
 
 	public static final String BASE_URL = "http://192.168.1.100/birds/index.php/api/01/";
-	// public static final String BASE_URL =
-	// "http://ogorzalek.info/birds/index.php/api/01/";
+	public static final String BASE_MEDIA_URL = "http://192.168.1.100/birds/media/";
 
 	public Handler handler = new Handler();
 	Executor executor = Executors.newCachedThreadPool();
 
 	HttpClient httpClient;
 
-	public static final String PREFS_NAME = "authprefs";
-	public static final String PREFS_API_KEY = "api_key";
-	public static final String PREFS_DEVICE_ID = "device_id";
-
-	//
-	public static final String BASE_MEDIA_URL = "http://10.8.200.241/qr/pictures/";
-
 	private static String apiKey = null;
 
-	@SuppressWarnings("unused")
-	private static String deviceId = null; // na razie nie uzywane, ale moze sie
-											// przydac
-
-	public static final int TIMEOUT_CONNECTION = 5000; // to sie chyba i tak nie
-														// liczy
-	public static final int TIMEOUT_SOCKET = 5000;
-	public static final int MAX_CACHE_AGE = 10 * 60 * 1000; // ms
-
 	private Context context;
-
 	private static Backend instance;
 
 	public static synchronized Backend instance(Context context) {

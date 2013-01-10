@@ -1,7 +1,5 @@
 package info.ogorzalek.birds.general;
 
-
-
 import java.util.Locale;
 
 import org.apache.http.client.HttpClient;
@@ -62,7 +60,8 @@ public class HttpClientProvider {
 			@Override
 			protected ClientConnectionManager createClientConnectionManager() {
 				SchemeRegistry registry = new SchemeRegistry();
-				registry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+				registry.register(new Scheme("http", PlainSocketFactory
+						.getSocketFactory(), 80));
 
 				HttpParams params = getParams();
 				HttpConnectionParams.setConnectionTimeout(params,

@@ -16,9 +16,7 @@
 		android:paddingBottom="3dp" android:paddingTop="3dp"
 		android:paddingLeft="3dp" android:paddingRight="3dp">
 		<ImageView android:id="@+id/bird_image"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
-			android:src="@drawable/bird_mock_photo_100" />
+			android:layout_width="65dp" android:layout_height="65dp" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:scaleType="centerCrop" android:src="@drawable/bird_mock_photo_100"/>
 	</RelativeLayout>
 	<TextView android:id="@+id/bird_name" android:layout_width="wrap_content"
 		android:layout_height="wrap_content" android:layout_alignTop="@+id/bird_list_element_parent"

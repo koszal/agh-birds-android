@@ -30,6 +30,7 @@
         <activity android:name=".activities.QuizActivity"></activity>
         <activity android:name=".activities.QuizLauncherActivity"></activity>
         <activity android:name=".activities.SettingsActivity"></activity>
+        <activity android:name=".activities.PictureActivity"></activity>
     </application>
 
 </manifest>
